@@ -22,4 +22,7 @@
 - 이 프로젝트에서 CLAUDE.md 변경 요청을 수행할 때 변경 전후를 확인하고, practice/experiments.md의 기존 기록을 삭제하지 말고 끝에 추가한다.
 - 근거 없는 과거 내용은 추측하지 않는다.
 - 저장 후 두 파일을 다시 읽어 확인한다.
-- 개인 GitHub에 업로드하기 전에, 팀 GitHub(starlike2you/AXC_team6)에도 올려도 되는지 먼저 물어본다.
+- GitHub 업로드는 요청에 적힌 표시로 구분한다.
+  - `[깃허브]`: 개인 GitHub(jjunyeongpark/jjunyeong-park)에만 올린다.
+  - `[팀깃허브]`: 팀 GitHub(starlike2you/AXC_team6)의 `박준영/` 폴더와 개인 GitHub 모두에 올린다.
+  - 표시 없이 업로드를 요청하면, 팀 GitHub에도 올릴지 먼저 물어본다.
