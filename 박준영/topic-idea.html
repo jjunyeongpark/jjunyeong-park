@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>주제 후보 노트 — 박준영</title>
+<style>
+  :root{
+    --ink:#1b1d2a; --muted:#5d6275; --line:#e3e5ee; --bg:#f6f7fb; --card:#ffffff;
+    --accent:#3d5afe; --accent-soft:#eef1ff; --good:#0f8a5f; --good-soft:#e6f6ef;
+    --warn:#c2410c; --warn-soft:#fff1e8; --mid:#8a6d00; --mid-soft:#fff8db;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Pretendard","Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+    line-height:1.6;font-size:15px}
+  .page{max-width:1040px;margin:0 auto;padding:40px 24px 64px}
+  header{background:linear-gradient(135deg,#1a1f4b,#3d5afe);color:#fff;border-radius:18px;padding:32px 36px;margin-bottom:28px}
+  header .eyebrow{font-size:12px;letter-spacing:.18em;opacity:.75;text-transform:uppercase}
+  header h1{margin:8px 0 6px;font-size:28px;line-height:1.3}
+  header p{margin:0;opacity:.85}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .meta span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:4px 12px;font-size:13px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:20px}
+  h2{margin:0 0 14px;font-size:19px;display:flex;align-items:center;gap:10px}
+  h2 .no{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;font-size:14px}
+  h3{font-size:15px;margin:18px 0 8px}
+  .tbl{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  th{background:#f3f4f9;color:var(--muted);font-weight:600;white-space:nowrap}
+  td a{color:var(--accent);word-break:break-all;text-decoration:none}
+  td a:hover{text-decoration:underline}
+  .tag{display:inline-block;border-radius:6px;padding:1px 8px;font-size:12px;font-weight:600;white-space:nowrap}
+  .ok{background:var(--good-soft);color:var(--good)}
+  .sum{background:var(--mid-soft);color:var(--mid)}
+  .no-data{background:var(--warn-soft);color:var(--warn)}
+  .pick{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .pick .box{border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .pick .box.main{border:2px solid var(--accent);background:var(--accent-soft)}
+  .pick .label{font-size:12px;color:var(--muted);font-weight:600}
+  .pick .title{font-size:18px;font-weight:700;margin:4px 0 8px}
+  .kv{display:grid;grid-template-columns:120px 1fr;gap:6px 12px;font-size:14px}
+  .kv dt{color:var(--muted)}
+  .kv dd{margin:0}
+  .score td.n{text-align:center;font-weight:600}
+  .s2{color:var(--good)} .s1{color:var(--mid)} .s0{color:var(--warn)}
+  .score tr.total td{background:#f3f4f9;font-weight:700}
+  .score tr.added td:first-child{border-left:3px solid var(--accent)}
+  .bars{display:grid;gap:10px;margin-top:6px}
+  .bar{display:grid;grid-template-columns:150px 1fr 48px;align-items:center;gap:12px;font-size:14px}
+  .bar .track{height:12px;background:#eceef5;border-radius:999px;overflow:hidden}
+  .bar .fill{height:100%;background:var(--accent);border-radius:999px}
+  .bar.top .fill{background:linear-gradient(90deg,#3d5afe,#7b8cff)}
+  ul.notes{margin:8px 0 0;padding-left:20px}
+  ul.notes li{margin:4px 0}
+  .legend{font-size:13px;color:var(--muted);margin-top:10px}
+  footer{color:var(--muted);font-size:12px;text-align:center;margin-top:24px}
+  @media (max-width:720px){ .pick{grid-template-columns:1fr} .bar{grid-template-columns:110px 1fr 40px} header{padding:24px} }
+  @media print{
+    body{background:#fff;font-size:12px}
+    .page{padding:0;max-width:none}
+    header{border-radius:0;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    section{break-inside:avoid;border-radius:8px}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="eyebrow">L.L.M Academy · Local ③ · 1교시 개인 실습</div>
+  <h1>주제 후보 노트 — 광주 K-웰니스</h1>
+  <p>광주의 지역 자원을 살펴보고, 12/22 기획전으로 이어갈 주제 후보를 고릅니다.</p>
+  <div class="meta"><span>작성 박준영</span><span>2026-11-16</span><span>AX 크리에이티브</span><span>조사 도구 Ego</span></div>
+</header>
+
+<section>
+  <h2><span class="no">1</span>살펴본 지역 자원</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>후보</th><th>자산 유형</th><th>찾은 것</th><th>출처</th><th>확인</th></tr></thead>
+    <tbody>
+      <tr><td><b>A. 광주김치타운</b></td><td>산업(먹거리)·역사문화</td><td>김치박물관, 계절별 김치체험, 발효 체험프로그램, 광주김치몰 · 남구 김치로 60</td><td><a href="https://www.gwangju.go.kr/kimchitown/">gwangju.go.kr/kimchitown</a></td><td><span class="tag ok">원문 확인</span></td></tr>
+      <tr><td><b>B. 무등산 증심사·춘설차</b></td><td>산업(차)·자연</td><td>의재미술관에서 춘설차 선물세트·티백 판매, 증심사 탐방로</td><td><a href="https://www.uijae.org/">uijae.org</a></td><td><span class="tag ok">원문 확인</span></td></tr>
+      <tr><td><b>C. 광주호 호수생태원</b></td><td>자연</td><td>2006년 개장 생태공원 · 09:00~18:00 · 무료 · 주변 가사문학 정자(환벽당·취가정)</td><td><a href="https://tour.gwangju.go.kr/home/tour/info/nature.cs?act=view&infoId=2">광주관광 (infoId=2)</a></td><td><span class="tag ok">원문 확인</span></td></tr>
+      <tr><td><b>D. 풍암호수공원</b></td><td>자연</td><td>24시간 개방 · 무료</td><td><a href="https://tour.gwangju.go.kr/home/tour/info/park/003.cs?act=view&infoId=278">광주관광 (infoId=278)</a></td><td><span class="tag ok">원문 확인</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="legend">조회일: 모두 2026-11-16</p>
+</section>
+
+<section>
+  <h2><span class="no">2</span>리뷰 대상과 후기 수</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>후보</th><th>리뷰 대상</th><th>후기 수 (네이버 검색 카드)</th><th>확인</th></tr></thead>
+    <tbody>
+      <tr><td>A</td><td>김치타운</td><td>리뷰 443 (방문자 리뷰 19)</td><td><span class="tag sum">요약만 확인</span></td></tr>
+      <tr><td>B</td><td>의재미술관 / 증심사</td><td>방문자 리뷰 76 / 리뷰 796</td><td><span class="tag sum">요약만 확인</span></td></tr>
+      <tr><td>C</td><td>광주호 호수생태원</td><td>리뷰 1,624 (방문자 리뷰 166)</td><td><span class="tag sum">요약만 확인</span></td></tr>
+      <tr><td>D</td><td>풍암호수공원</td><td>리뷰 729 (방문자 리뷰 79)</td><td><span class="tag sum">요약만 확인</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="no">3</span>내 주제 후보</h2>
+  <div class="pick">
+    <div class="box main">
+      <div class="label">1순위</div>
+      <div class="title">광주김치타운 — 발효와 김치로 몸을 돌보는 하루</div>
+      <dl class="kv">
+        <dt>고른 이유</dt><dd>광주시가 직접 운영하는 김치 체험·판매(김치몰)가 있어, '돌보기' 웰니스와 실제 상품이 바로 이어집니다.</dd>
+        <dt>공식자료</dt><dd><a href="https://www.gwangju.go.kr/kimchitown/">광주광역시 김치타운 누리집</a> (기준일 미표시)</dd>
+        <dt>리뷰 대상</dt><dd>김치타운 · 네이버 리뷰 443 (방문자 19)</dd>
+        <dt>주의</dt><dd>김치박물관 임시 휴관 11/17~11/25 · 네이버 숫자 두 개가 각각 무엇을 센 것인지 <span class="tag no-data">미확인</span></dd>
+      </dl>
+    </div>
+    <div class="box">
+      <div class="label">2순위</div>
+      <div class="title">무등산 증심사 자락 — 춘설차와 산책의 쉼</div>
+      <dl class="kv">
+        <dt>고른 이유</dt><dd>광주에서 만든 차를 산책길 끝 미술관에서 마시는 흐름이라 걷기·쉬기와 차 상품이 한 동선에 이어집니다.</dd>
+        <dt>공식자료</dt><dd><a href="https://www.uijae.org/">의재미술관 공식 사이트</a> (기준일 미표시)</dd>
+        <dt>리뷰 대상</dt><dd>의재미술관 방문자 리뷰 76 / 증심사 리뷰 796</dd>
+        <dt>주의</dt><dd>지자체 공식자료 <span class="tag no-data">미확인</span> · 실존 화가·작품은 캐릭터로 쓰지 않음</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">4</span>체크리스트 자가 점수</h2>
+  <div class="tbl"><table class="score">
+    <thead><tr><th>#</th><th>문항</th><th>A 김치타운</th><th>B 증심사·춘설차</th><th>C 광주호</th><th>D 풍암호수</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>기관·지자체 공식자료를 열 수 있는가</td><td class="n s2">2</td><td class="n s1">1</td><td class="n s2">2</td><td class="n s2">2</td></tr>
+      <tr><td>2</td><td>리뷰 50건 이상 대상이 있는가</td><td class="n s2">2</td><td class="n s2">2</td><td class="n s2">2</td><td class="n s2">2</td></tr>
+      <tr><td>3</td><td>팀원 모두 6주 해 보고 싶은가</td><td class="n">팀</td><td class="n">팀</td><td class="n">팀</td><td class="n">팀</td></tr>
+      <tr><td>4</td><td>캐릭터 인물·동물·사물이 떠오르는가</td><td class="n s2">2</td><td class="n s2">2</td><td class="n s1">1</td><td class="n s1">1</td></tr>
+      <tr><td>5</td><td>쉬기·걷기·돌보기 경험이 있는가</td><td class="n s1">1</td><td class="n s2">2</td><td class="n s2">2</td><td class="n s2">2</td></tr>
+      <tr><td>6</td><td>웰니스 상품이 상상되는가</td><td class="n s2">2</td><td class="n s2">2</td><td class="n s1">1</td><td class="n s0">0</td></tr>
+      <tr class="added"><td>7</td><td>차별점 — 다른 지역·팀과 겹치지 않는가</td><td class="n s2">2</td><td class="n s2">2</td><td class="n s1">1</td><td class="n s0">0</td></tr>
+      <tr class="added"><td>8</td><td>저작권 — 캐릭터·이미지를 자유롭게 만들 수 있는가</td><td class="n s2">2</td><td class="n s1">1</td><td class="n s2">2</td><td class="n s2">2</td></tr>
+      <tr class="added"><td>9</td><td>상품성 — 실제로 파는 상품이 있는가</td><td class="n s2">2</td><td class="n s2">2</td><td class="n s1">1</td><td class="n s0">0</td></tr>
+      <tr class="total"><td></td><td>합계 (3번 제외, 16점 만점)</td><td class="n">15</td><td class="n">14</td><td class="n">12</td><td class="n">9</td></tr>
+    </tbody>
+  </table></div>
+  <p class="legend">왼쪽 파란 선 = 추가 문항(7~9) · 항목당 0·1·2점</p>
+
+  <div class="bars">
+    <div class="bar top"><span>A 김치타운</span><div class="track"><div class="fill" style="width:93.75%"></div></div><b>15</b></div>
+    <div class="bar"><span>B 증심사·춘설차</span><div class="track"><div class="fill" style="width:87.5%"></div></div><b>14</b></div>
+    <div class="bar"><span>C 광주호</span><div class="track"><div class="fill" style="width:75%"></div></div><b>12</b></div>
+    <div class="bar"><span>D 풍암호수</span><div class="track"><div class="fill" style="width:56.25%"></div></div><b>9</b></div>
+  </div>
+
+  <h3>점수 근거</h3>
+  <ul class="notes">
+    <li><b>A</b> 공식 누리집과 김치몰이 있음(1·9). 배추·항아리를 캐릭터로 쓸 수 있음(4). 쉬기·걷기보다는 '돌보기(발효 먹거리)' 쪽이라 5번은 1점.</li>
+    <li><b>B</b> 공식자료가 미술관 사이트뿐이라 1번은 1점. 실존 화가와 그 작품은 캐릭터·이미지로 쓰지 않아야 해서 8번은 1점. 춘설차 판매는 확인함(9).</li>
+    <li><b>C·D</b> 산책 경험은 강함(5). 다만 팔 수 있는 지역 상품이 약하고 호수공원은 흔해서 6·7·9번이 낮음.</li>
+    <li>7번 차별점과 C의 4번 캐릭터는 제 판단입니다(추정).</li>
+  </ul>
+</section>
+
+<footer>원본: 박준영/topic-idea.md · 조회일 2026-11-16</footer>
+</div>
+</body>
+</html>
