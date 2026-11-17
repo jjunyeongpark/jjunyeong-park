@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>유동 오리탕거리 지도</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1f2328;--muted:#5f6670;--line:#e4e0d6;--food:#c0392b;--spot:#2f6b4f;--zone:#e08a2c;--green:#3f9a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16181b;--card:#1f2226;--ink:#eceff1;--muted:#a3abb3;--line:#30353b;--food:#e5735f;--spot:#7cc39c;--zone:#f0a95a}}
+:root[data-theme="dark"]{--bg:#16181b;--card:#1f2226;--ink:#eceff1;--muted:#a3abb3;--line:#30353b;--food:#e5735f;--spot:#7cc39c;--zone:#f0a95a}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:20px 16px 32px}
+h1{margin:0 0 4px;font-size:26px;font-weight:800;letter-spacing:-.5px}
+header p{margin:0;color:var(--muted);font-size:14px}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin:12px 0 14px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.grid{display:grid;grid-template-columns:1fr 340px;gap:16px}
+@media (max-width:860px){.grid{grid-template-columns:1fr}}
+#map{height:620px;border-radius:14px;border:1px solid var(--line);overflow:hidden}
+@media (max-width:860px){#map{height:440px}}
+.list{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 0;max-height:620px;overflow:auto}
+.sec{padding:10px 16px 4px;font-size:12px;font-weight:700;color:var(--muted)}
+.item{display:flex;gap:12px;padding:11px 16px;cursor:pointer;border-bottom:1px solid var(--line)}
+.item:hover{background:color-mix(in srgb,var(--spot) 8%,transparent)}
+.num{flex:0 0 28px;height:28px;border-radius:50%;color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:13px}
+.item h3{margin:0;font-size:15px}.item p{margin:3px 0 0;font-size:13px;color:var(--muted)}
+.item .d{font-size:12px;font-weight:600}
+.pin{width:28px;height:28px;border-radius:50%;color:#fff;font:800 13px 'Noto Sans KR',sans-serif;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35)}
+.tag{white-space:nowrap;background:var(--zone);color:#fff;font:700 12px 'Noto Sans KR',sans-serif;padding:3px 8px;border-radius:6px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.3);}
+.tag.g{background:var(--green);transform:translate(-20%,-140%)}
+.tag.e{transform:translate(8px,-50%)}.tag.w{transform:translate(calc(-100% - 8px),-50%)}
+.zoombtn{display:flex;gap:8px;margin:0 0 10px}.zoombtn button{font:600 13px 'Noto Sans KR',sans-serif;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.note{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;font-size:13px;color:var(--muted);line-height:1.6}
+.note b{color:var(--ink)}
+</style></head><body><div class="wrap">
+<header><h1>유동 오리탕거리 지도</h1><p>광주 북구 경양로 일대 · 오리탕집과 식후 들르기 좋은 곳</p></header>
+<div class="legend"><span><i style="background:var(--zone);border-radius:2px;width:22px;height:6px;vertical-align:2px"></i>오리탕거리 (경양로, 추정 구간)</span><span><i style="background:var(--food)"></i>오리탕집</span><span><i style="background:var(--spot)"></i>주변 가볼 곳</span></div>
+<div class="zoombtn"><button id="bStreet" type="button">오리탕거리 확대</button><button id="bGreen" type="button">푸른길까지 보기</button><button id="bAll" type="button">주변 전체 보기</button></div>
+<div class="grid"><div id="map"></div><div class="list" id="list"></div></div>
+<div class="note">
+<b>오리탕거리 구간</b> · 관광 안내에는 "북구 경양로 일대, 유동·신안동 경계, 대표 주소 경양로 125"로만 나오고 공식 시작·끝 지점은 찾지 못했습니다(미확인). 지도의 주황 선은 오리탕집이 모인 경양로 약 430m를 표시한 추정입니다. 출처: ktriptips.com (조회 2026-11-17, 요약만 확인), 도로 모양: OpenStreetMap.<br>
+<b>푸른길</b> · 초록색 면은 OpenStreetMap에 '푸른길공원'으로 올라 있는 구간 중 이 근처 두 곳입니다 (조회 2026-11-17). 공원은 더 길게 이어질 수 있지만, OSM에 없는 부분은 그리지 않았습니다(미확인).<br>
+<b>거리</b> · 영미오리탕 본점에서 잰 직선거리입니다. 걷는 거리는 이보다 깁니다.<br>
+<b>위치</b> · OpenStreetMap(Nominatim) 검색 좌표 (조회 2026-11-17). 영광오리탕은 도로명 '경양로119번길' 위치로 표시해서 실제 건물과 수십 m 차이 날 수 있습니다. 강천회관은 위치를 찾지 못해 뺐습니다(미확인).<br>
+<b>가게 정보</b> · polle.com, ktriptips.com 검색 요약 (조회 2026-11-17, 요약만 확인). 광고 여부·영업시간·휴무는 미확인입니다.
+</div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const P=[
+ {t:"food",n:"영미오리탕 본점",a:"북구 경양로 126",ll:[35.1614634,126.9054767],d:"오리탕거리 대표 집 · 미나리 넉넉"},
+ {t:"food",n:"영광오리탕",a:"북구 경양로119번길 18",ll:[35.1621625,126.9059327],d:"들깨 뚝배기 오리탕 · 09~22시(안내 기준)"},
+ {t:"spot",n:"푸른길공원",a:"북구 중흥동·신안동 쪽 (광주역 동쪽)",ll:[35.164049,126.91585],d:"초록색 길쭉한 공원 띠 · 표시된 곳은 서쪽 끝 부근"},
+ {t:"spot",n:"광주역",a:"북구 무등로 235",ll:[35.1653215,126.9093193],d:"오리탕거리 바로 위쪽"},
+ {t:"spot",n:"양동시장",a:"서구 경열로 152",ll:[35.1545129,126.901769],d:"전통시장"},
+ {t:"spot",n:"대인시장",a:"동구 대인동",ll:[35.1539478,126.9178056],d:"전통시장 · 먹거리"},
+ {t:"spot",n:"국립아시아문화전당",a:"동구 문화전당로 38",ll:[35.1472744,126.9208083],d:"전시 · 충장로와 붙어 있음"},
+ {t:"spot",n:"사직공원",a:"남구 사직길",ll:[35.1416518,126.9114019],d:"전망타워 · 봄 벚꽃"},
+ {t:"spot",n:"양림동 펭귄마을",a:"남구 천변좌로446번길 7",ll:[35.140236,126.9168664],d:"골목 사진 명소"}
+];
+const css=getComputedStyle(document.documentElement),col=k=>css.getPropertyValue(k).trim();
+const map=L.map('map',{scrollWheelZoom:false});const grp=[];
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap contributors'}).addTo(map);
+const PG=[[[35.163852,126.91775],[35.163699,126.91765],[35.163402,126.918736],[35.163123,126.919822],[35.162999,126.919772],[35.164049,126.91585],[35.164229,126.915922],[35.164012,126.916731],[35.164114,126.916772],[35.163852,126.91775]],[[35.163054,126.920028],[35.163014,126.919996],[35.162884,126.920015],[35.162871,126.920099],[35.162835,126.92032],[35.16274,126.920709],[35.162488,126.921749],[35.162236,126.922423],[35.161987,126.922958],[35.161798,126.923249],[35.161488,126.923619],[35.161143,126.923944],[35.160998,126.92409],[35.160647,126.924279],[35.160507,126.924331],[35.160494,126.924371],[35.160485,126.924673],[35.160906,126.924452],[35.161199,126.924202],[35.161469,126.923942],[35.161541,126.923829],[35.161633,126.923674],[35.161795,126.923436],[35.161987,126.923179],[35.162088,126.922991],[35.162125,126.92298],[35.162134,126.923144],[35.162281,126.923208],[35.16263,126.921884],[35.162854,126.921037],[35.163004,126.920508],[35.163012,126.920432],[35.162944,126.920411],[35.163054,126.920028]]];
+const pg=L.polygon(PG,{color:col('--green'),weight:5,fillColor:col('--green'),fillOpacity:.6}).addTo(map).bindTooltip('푸른길공원',{sticky:true});
+L.marker([35.1636,126.9205],{icon:L.divIcon({className:'',html:'<div class="tag g">푸른길</div>',iconSize:null,iconAnchor:[0,0]})}).addTo(map);
+const ST=[[35.160869,126.907996],[35.161049,126.907322],[35.161229,126.90666],[35.161639,126.905146],[35.16175,126.90474],[35.161867,126.904315],[35.161953,126.903993],[35.16209,126.903483]];
+L.polyline(ST,{color:'#fff',weight:14,opacity:.9}).addTo(map);
+const stLine=L.polyline(ST,{color:col('--zone'),weight:9,opacity:.95}).addTo(map).bindTooltip('오리탕거리 (경양로, 추정 구간 약 430m)',{sticky:true});
+const endIcon=(t,side)=>L.divIcon({className:'',html:'<div class="tag '+side+'">'+t+'</div>',iconSize:null,iconAnchor:[0,0]});
+L.marker(ST[0],{icon:endIcon('동쪽 끝 →','e')}).addTo(map);
+L.marker(ST[ST.length-1],{icon:endIcon('← 서쪽 끝','w')}).addTo(map);
+const base=L.latLng(P[0].ll),list=document.getElementById('list');
+let f=0,s=0,lastT='';
+P.forEach(p=>{
+  const food=p.t==='food',label=food?String(++f):String.fromCharCode(64+(++s)),c=col(food?'--food':'--spot');
+  const m=L.marker(p.ll,{icon:L.divIcon({className:'',html:'<div class="pin" style="background:'+c+'">'+label+'</div>',iconSize:[28,28],iconAnchor:[14,14]})}).addTo(map);
+  const dist=Math.round(base.distanceTo(p.ll)),dt=dist<50?'기준점':(dist>=1000?(dist/1000).toFixed(1)+'km':dist+'m');
+  m.bindPopup('<b>'+p.n+'</b><br>'+p.a+'<br>'+p.d+'<br>직선 '+dt);m.bindTooltip(p.n,{direction:'top',offset:[0,-12]});
+  grp.push(m);
+  if(p.t!==lastT){const h=document.createElement('div');h.className='sec';h.textContent=food?'오리탕집':'주변 가볼 곳';list.appendChild(h);lastT=p.t;}
+  const el=document.createElement('div');el.className='item';
+  el.innerHTML='<div class="num" style="background:'+c+'">'+label+'</div><div><h3>'+p.n+'</h3><p>'+p.a+'</p><p>'+p.d+'</p><div class="d" style="color:'+c+'">직선 '+dt+'</div></div>';
+  el.onclick=()=>{map.setView(p.ll,17);m.openPopup();};
+  list.appendChild(el);
+});
+const fitStreet=()=>{map.invalidateSize();map.fitBounds(stLine.getBounds(),{padding:[90,90],maxZoom:18});};
+const fitAll=()=>{map.invalidateSize();map.fitBounds(L.featureGroup(grp.concat([stLine])).getBounds(),{padding:[30,30]});};
+document.getElementById('bGreen').onclick=()=>{map.invalidateSize();map.fitBounds(stLine.getBounds().extend(pg.getBounds()),{padding:[50,50]});};
+document.getElementById('bStreet').onclick=fitStreet;document.getElementById('bAll').onclick=fitAll;
+fitStreet();window.addEventListener('load',fitStreet);
+</script></body></html>
