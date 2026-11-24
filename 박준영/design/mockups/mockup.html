@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>오미 기획전 시안</title>
+<link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--white:#FFFDF7;--green:#5E9E4B;--beige:#D4C4A8;--cream:#FBF3E4;--ink:#3B2F25;--soft:#EFE5D2}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1440px;background:var(--cream);color:var(--ink);font-family:'Noto Sans KR',sans-serif;font-size:17px;line-height:1.55}
+h1,h2,h3,.jua{font-family:'Jua',sans-serif;font-weight:400}
+.who{background:var(--ink);color:var(--white);padding:10px 48px;font-size:14px;display:flex;justify-content:space-between}
+.nav{display:flex;align-items:center;gap:28px;padding:16px 48px;background:var(--white);border-bottom:2px solid var(--beige)}
+.nav .logo{display:flex;align-items:center;gap:10px;font-family:'Jua';font-size:24px;color:var(--green)}
+.nav .menu{display:flex;gap:22px;margin-left:auto;font-size:15px}
+.nav .cta{background:var(--green);color:var(--white);padding:8px 18px;border-radius:999px;font-size:15px}
+section{padding:64px 72px;position:relative}
+section.cream{background:var(--cream)} section.white{background:var(--white)} section.beige{background:var(--soft)}
+.no{position:absolute;top:20px;left:24px;font-size:12px;color:#8a7a66;letter-spacing:.05em}
+.eyebrow{display:inline-block;background:var(--green);color:var(--white);font-size:13px;padding:3px 12px;border-radius:999px;margin-bottom:10px}
+h2{font-size:42px;color:var(--green);margin-bottom:6px}
+.sub{font-size:16px;color:#6b5a48;margin-bottom:24px}
+.row{display:grid;grid-template-columns:340px 1fr;gap:48px;align-items:start}
+.row.right{grid-template-columns:1fr 340px}
+.row.right .charcol{order:2}
+.center{text-align:center}
+.center .charcol{display:flex;justify-content:center;gap:24px;margin:18px 0}
+.oc{width:260px;aspect-ratio:344/384;background:url(character-sheet.png) no-repeat;background-size:400% 200%;border-radius:24px}
+.oc.sm{width:150px}
+.bubble{position:relative;background:var(--white);border:2px solid var(--ink);border-radius:22px;padding:16px 20px;font-size:19px;margin-top:14px}
+.bubble:before{content:"";position:absolute;top:-12px;left:60px;width:18px;height:18px;background:var(--white);border-left:2px solid var(--ink);border-top:2px solid var(--ink);transform:rotate(45deg)}
+.center .bubble{max-width:760px;margin:10px auto 0}
+.pains{display:flex;gap:18px;justify-content:center;margin:8px 0 6px}
+.pain{background:var(--white);border:2px dashed var(--beige);border-radius:18px;padding:14px 20px;font-size:18px;min-width:280px}
+.pain b{display:block;font-family:'Jua';font-size:15px;color:var(--green);font-weight:400}
+.steps{display:flex;gap:14px;margin:6px 0 22px;align-items:center;flex-wrap:wrap}
+.step{display:flex;align-items:center;gap:10px;background:var(--white);border-radius:16px;padding:12px 18px;border:2px solid var(--beige)}
+.step i{font-style:normal;width:34px;height:34px;border-radius:50%;background:var(--green);color:var(--white);display:grid;place-items:center;font-family:'Jua';font-size:18px}
+.arrow{color:var(--green);font-size:22px}
+.cards{display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:16px;margin-top:6px}
+.card{background:var(--white);border:1.5px solid var(--ink);border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.card .ph{height:70px;border-radius:12px;background:repeating-linear-gradient(45deg,#f3ecdf,#f3ecdf 8px,#ebe1cf 8px,#ebe1cf 16px);display:grid;place-items:center;font-size:12px;color:#9b8a73}
+.card .nm{font-weight:700;font-size:17px}
+.tag{align-self:flex-start;font-size:12px;padding:2px 10px;border-radius:999px}
+.tag.real{background:var(--beige);color:var(--ink)}
+.tag.plan{background:#e3efdc;color:#3c6d2e}
+.tag.alley,.tag.book{background:#f1e7d3;color:#7a5b2e;border:1px solid var(--beige)}
+.price{font-family:'Jua';font-size:20px;color:var(--ink)}
+.desc{font-size:14px;color:#6b5a48}
+.band{background:var(--green);color:var(--white);border-radius:14px;padding:12px 20px;font-family:'Jua';font-size:22px;margin:22px 0 4px;text-align:center}
+.btns{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.center .btns{justify-content:center}
+.btn{background:var(--green);color:var(--white);border-radius:999px;padding:12px 24px;font-weight:700;font-size:16px}
+.btn.ghost{background:transparent;color:var(--green);border:2px solid var(--green)}
+.btn .soon{font-size:11px;background:var(--white);color:var(--green);border-radius:999px;padding:1px 7px;margin-left:6px}
+table{border-collapse:collapse;width:100%;background:var(--white);border-radius:14px;overflow:hidden;margin-top:6px}
+th,td{padding:10px 14px;border-bottom:1px solid var(--soft);text-align:left;font-size:15px}
+th{background:var(--beige);font-weight:700}
+.list{display:grid;grid-template-columns:repeat(var(--cols,4),1fr);gap:10px;margin-top:6px}
+.list div{background:var(--white);border:1px solid var(--beige);border-radius:12px;padding:10px 12px;font-size:14px;text-align:center}
+.listh{font-family:'Jua';font-size:18px;color:var(--green);margin:16px 0 4px}
+.notes{margin-top:18px;font-size:13px;color:#7a6a56}
+.notes p{margin:3px 0}
+.counter{display:inline-flex;gap:24px;background:var(--white);border:2px solid var(--green);border-radius:16px;padding:12px 22px;margin-top:18px;font-family:'Jua';font-size:20px}
+.counter b{color:var(--green);font-weight:400}
+.bundle3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.bcard{background:var(--white);border:1.5px solid var(--ink);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+.bcard h3{font-size:26px;color:var(--green)}
+.bcard .who2{font-size:13px;background:var(--beige);border-radius:999px;padding:2px 10px}
+.bcard dl{text-align:left;width:100%;font-size:14px}
+.bcard dt{font-weight:700;margin-top:6px} .bcard dd{color:#6b5a48}
+footer{background:var(--ink);color:var(--white);padding:28px 72px;font-size:14px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const BOX={1:[110,0,270,410],2:[440,0,260,410],3:[770,0,260,410],4:[1095,0,230,410],5:[120,425,250,310],6:[420,425,260,310],7:[755,425,280,310],8:[1045,425,320,310]};
+const oc=(n,cls='',W)=>{const [x,y,w,h]=BOX[n];W=W||(cls==='sm'?150:240);const s=W/w;return `<div class="oc ${cls}" style="width:${W}px;height:${Math.round(h*s)}px;aspect-ratio:auto;background-size:${1376*s}px ${768*s}px;background-position:${-x*s}px ${-y*s}px"></div>`};
+const C={
+ R1:{nm:'태화오리탕 택배',tag:'real',price:'반 마리 36,900원 · 한 마리 59,900원',desc:"네이버 스마트스토어 '태화오리탕'"},
+ R2:{nm:'전라도미가 오리탕 800g × 4팩 밀키트',tag:'real',price:'48,900원',desc:'쿠팡 (판매자 전라도미가) · 유동 골목 밖 가게'},
+ R3:{nm:'산지한입 돌미나리',tag:'real',price:'20,800원~ / 20,900원',desc:'11번가 · G마켓 (가치드림마켓)'},
+ R4:{nm:'곡물제작소 들깨가루 250g',tag:'real',price:'15,900원 + 배송비 3,000원',desc:'남도장터'},
+ P2:{nm:'집에서 한 그릇 세트',tag:'plan',price:'9,900원 (+ 택배 추가 시 46,800원 · 58,800원)',desc:'미나리 + 들깨 초장 · 추가 옵션: 택배 오리탕(R1 반 마리 +36,900원 또는 R2 +48,900원)'},
+ P3:{nm:'오미 웰컴 키트',tag:'plan',price:'9,000원',desc:'먹는 법 카드 + 골목 지도 카드 + 미나리 추가권 + 오미 손수건'},
+ G1:{nm:'오미 키링',tag:'plan',price:'7,000원',desc:'미나리 꽂은 오미'},
+ G2:{nm:'오미 수저받침',tag:'plan',price:'8,000원',desc:'미나리 꽂은 흰 오리 모양'},
+ G3:{nm:'오미네 식구 스티커 팩',tag:'plan',price:'3,000원',desc:'오미 · 뭉근 할매 · 고소미 · 파릇이 · 토란이'},
+ G4:{nm:'오미 앞치마',tag:'plan',price:'20,000원',desc:'들깨 베이지, 세로 점 5개'},
+ G5:{nm:'오미 에코백',tag:'plan',price:'15,000원',desc:'들깨 베이지, 평상에 앉은 오미'},
+ G6:{nm:'푸른길 텀블러',tag:'plan',price:'25,000원',desc:'미나리 초록 몸통 + 들깨 베이지 뚜껑'},
+ A1:{nm:'미나리 먼저 한 상',tag:'alley',price:'가게 가격 그대로',desc:'첫 접시는 미나리 먼저, 들깨 초장 첫 콕'},
+ A2:{nm:'효도 한 상',tag:'alley',price:'가게 가격 그대로',desc:'입식 자리 + 미나리 한 번 더 + 오미 선물'},
+ A3:{nm:'평상 쉼표',tag:'alley',price:'무료',desc:'다 먹고 골목 평상에서 잠깐 쉬기'},
+ A4:{nm:'푸른길 소화 산책',tag:'alley',price:'무료',desc:'한 그릇 먹고 푸른길까지 천천히'},
+ A5:{nm:'경기 날 반 마리 + 산책 카드',tag:'alley',price:'무료 안내물',desc:'둘이면 반 마리, 푸른길 산책 지도 카드'},
+ A6:{nm:'오미 한 그릇 적립',tag:'alley',price:'손님 추가 부담 없음',desc:'100그릇마다 동네 어르신께 한 그릇'},
+ K1:{nm:'오미 웰컴 키트 (효도)',tag:'plan',price:'3,000원',desc:'인쇄지 1장 + 오미 손편지 카드 + 오미 쿠폰'},
+ K2:{nm:'오미 웰컴 키트',tag:'plan',price:'3,000원',desc:'인쇄지 1장 + 오미 스티커 + 오미 쿠폰'},
+ B1:{nm:'식당 예약',tag:'book',price:'가게 가격 그대로 (반 마리 40,000원 · 한 마리 60,000원)',desc:'골목 가게 9곳 중 손님이 직접 고름'},
+ B2:{nm:'숙소 예약',tag:'book',price:'1박 46,710원~ (3곳 미확인)',desc:'숙소 6곳 중 손님이 직접 고름'},
+};
+const TAG={real:'연계 희망(협의 전)',plan:'직접 구성(기획 상품) · 예시 가격',alley:'골목에서 · 가게 협의 전',book:'손님이 직접 선택 · 협의 전'};
+const KIT=(who)=>`<div class="listh">웰컴 키트 안에</div><div class="list" style="--cols:1"><div>인쇄지 1장: 먹는 법 · 몇 명이면 얼마나 · 골목 가게 9곳 지도(주차 · 브레이크타임) · 덜 붐비는 시간(예측, 리뷰 기준) · 푸른길 산책 · 숙소 가는 길</div><div>${who}</div><div>오미 쿠폰: 제휴 식당 미나리 한 바구니 추가 · 제휴 카페 10% 할인 (제휴처 미정 · 협의 전)</div></div>`;
+const OPT=(ks)=>`<div class="listh">추가 옵션 (원하는 분만)</div>`+cards(ks,ks.length,{R1:{price:'반 마리 36,900원 · 한 마리 59,900원'}});
+const card=(k,o={})=>{const c={...C[k],...o};return `<div class="card"><div class="ph">${c.tag==='real'?'사진 없음 (판매처 허락 전)':'그림 자리'}</div><span class="tag ${c.tag}">${TAG[c.tag]}</span><div class="nm">${c.nm}</div><div class="price">${c.price}</div><div class="desc">${c.desc}</div></div>`};
+const cards=(ks,cols=3,o={})=>`<div class="cards" style="--cols:${cols}">${ks.map(k=>card(k,o[k]||{})).join('')}</div>`;
+const btns=a=>`<div class="btns">${a.map(b=>{const s=b.endsWith('*');const t=s?b.slice(0,-1):b;return `<span class="btn${t.startsWith('~')?' ghost':''}">${t.replace(/^~/,'')}${s?'<span class="soon">준비 중</span>':''}</span>`}).join('')}</div>`;
+const steps=a=>`<div class="steps">${a.map((s,i)=>`${i?'<span class="arrow">→</span>':''}<div class="step"><i>${i+1}</i>${s}</div>`).join('')}</div>`;
+const notes=a=>`<div class="notes">${a.map(n=>`<p>${n}</p>`).join('')}</div>`;
+const listBlock=(h,a,cols=4)=>`<div class="listh">${h}</div><div class="list" style="--cols:${cols}">${a.map(x=>`<div>${x}</div>`).join('')}</div>`;
+const stayTable=`<table><tr><th>1박 2일</th><th>사람</th><th>1일차 저녁</th><th>2일차</th><th>묶음 가격 (예시)</th></tr>
+<tr><td>효도</td><td>3명</td><td>효도 한 상 · 한 마리</td><td>1인분 × 3</td><td>199,500원</td></tr>
+<tr><td>효도</td><td>2명</td><td>효도 한 상 · 반 마리</td><td>1인분 × 2</td><td>155,500원</td></tr>
+<tr><td>처음</td><td>2명</td><td>미나리 먼저 한 상 · 반 마리</td><td>1인분 × 2</td><td>142,000원</td></tr>
+<tr><td>경기 날</td><td>2명</td><td>반 마리</td><td>1인분 × 2</td><td>125,710원</td></tr></table>`;
+const sec=(o)=>{
+ const char=o.chars?o.chars.map(n=>oc(n,o.smallChar?'sm':'')).join(''):'';
+ const bubble=o.bubble?`<div class="bubble">${o.bubble}</div>`:'';
+ const head=`${o.eyebrow?`<span class="eyebrow">${o.eyebrow}</span>`:''}<h2>${o.title}</h2>${o.sub?`<div class="sub">${o.sub}</div>`:''}`;
+ if(o.layout==='center') return `<section class="${o.bg||'cream'}"><span class="no">${o.no}</span><div class="center">${head}${o.pre||''}<div class="charcol">${char}</div>${bubble}${o.body||''}${o.btns?btns(o.btns):''}${o.notes?notes(o.notes):''}</div></section>`;
+ if(o.layout==='full') return `<section class="${o.bg||'cream'}"><span class="no">${o.no}</span>${head}${o.body||''}${o.btns?btns(o.btns):''}${o.notes?notes(o.notes):''}</section>`;
+ return `<section class="${o.bg||'cream'}"><span class="no">${o.no}</span>${head}${o.pre||''}<div class="row ${o.layout==='right'?'right':''}"><div class="charcol">${char}${bubble}</div><div>${o.body||''}</div></div>${o.band?`<div class="band">${o.band}</div>`:''}${o.btns?btns(o.btns):''}${o.notes?notes(o.notes):''}</section>`;
+};
+const footer=`<footer>수업용 기획안이며, 소개한 가게 · 판매처와 제휴하지 않았습니다 · AX 크리에이티브 6팀</footer>`;
+const pains=a=>`<div class="pains">${a.map(([w,t])=>`<div class="pain"><b>${w}</b>${t}</div>`).join('')}</div>`;
+const PAIN3=pains([['처음 온 여행객','먹는 법을 몰라요'],['부모님 모시고 온 가족','몇 마리 시켜야 할지 몰라요'],['야구 경기 날 손님','경기 전이라 오래 못 기다려요']]);
+
+const PLANS={
+jun:{who:'박준영 플랜 (my-page-plan.md) · 5칸',html:[
+ sec({no:'① 첫 칸 · 불편',layout:'center',eyebrow:'K-웰니스 기획전',title:'「광주식 보양, 한 그릇」',sub:'처음 오면 망설여지는 것',pre:PAIN3,chars:[1],bubble:'오미~ 먹는 법도, 몇 마리 시킬지도 몰라 망설여지죠? 괜찮아요, 한 그릇씩 천천히 알려 드릴게요.',btns:['처음이에요','부모님과 와요','경기 날 들러요']}),
+ sec({no:'② 효도 한 그릇',bg:'cream',title:'효도 한 그릇',sub:'부모님 모시고 오는 · 부모님께 보내는 가족',chars:[7],bubble:'오미~ 둘이면 반 마리, 넷이면 한 마리. 식구 챙기듯 따숩게 한 그릇 하쇼잉.',body:cards(['K1','B1','B2'],3)+KIT('오미 손편지 카드')+OPT(['R1','R2','G4']),band:'추천: 주차할 수 있는 가게 (가게별 미확인)',btns:['웰컴 키트 보기','식당 · 숙소 고르기*']}),
+ sec({no:'③ 처음 한 그릇',layout:'right',bg:'white',title:'처음 한 그릇',sub:'처음 온 여행객',pre:steps(['미나리','들깨 초장','콕']),chars:[8],bubble:'오미~ 처음이어도 괜찮아요. 미나리부터 들깨 초장에 콕, 그게 광주식 한 그릇이에요 🦆',body:cards(['K2','B1','B2'],3)+KIT('오미 스티커')+OPT(['R1','R2','G1','G2']),band:'추천: 골목까지 걸어갈 수 있는 숙소',btns:['웰컴 키트 보기','식당 · 숙소 고르기*']}),
+ sec({no:'④ 경기 날 한 그릇',layout:'right',bg:'cream',title:'경기 날 한 그릇',sub:'야구 경기 날 손님',chars:[2],bubble:'오미~ 응원 가기 전엔 반 마리로 든든하게, 이겨도 져도 한 그릇! 한 집이 붐비면 옆집도 오리탕 골목이에요.',body:cards(['K2','B1','B2'],3)+KIT('오미 스티커')+OPT(['R1','R2','G5','G6']),band:'추천: 브레이크타임 없는 가게 · 광주역 근처 숙소',btns:['웰컴 키트 보기','식당 · 숙소 고르기*']}),
+ sec({no:'⑤ 마지막 칸',layout:'full',bg:'white',title:'함께하고 싶은 곳',sub:'연계 희망(협의 전) · 가격 확인 2026-11-20',body:`<div class="row right"><div class="charcol">${oc(5,'sm')}<div class="bubble">오미~ 소개한 가게와 판매처는 아직 이야기 나누기 전이에요. 한 그릇 고르기 전에 가격을 꼭 다시 확인해 주세요.</div></div><div>${cards(['R1','R2'],2)}</div></div>`+listBlock('고를 수 있는 식당 (골목 가게 9곳)',['영미오리탕','태화오리탕','영양오리탕','풍년오리탕','영일오리탕','장성오리탕','현대오리탕','영광오리탕','보미약오리탕'],5)+listBlock('고를 수 있는 숙소 (6곳)',['호텔여기어때 광주역점','광주역 20헤르츠','광주 그랑메종 바오밥 1호점','신안동 라베호텔','광주 이지스테이호텔','광주 신안동 에이치에비뉴'],3)+listBlock('오미 쿠폰 제휴처',['제휴 식당: 미정 (협의 전)','제휴 카페: 미정 (협의 전)'],2),notes:['가격은 2026-11-20에 본 값이며 바뀔 수 있습니다','숙소 가격 중 3곳은 팀 1박 2일 표에서 거꾸로 계산한 값이고, 3곳은 미확인입니다','직접 구성(기획 상품)과 굿즈 가격은 예시 가격(상상)입니다','수업용 기획안이며, 소개한 가게 · 판매처와 제휴하지 않았습니다'],btns:['판매처 페이지 열기','~처음으로']}),
+]},
+sihyeon:{who:'안시현 플랜 (my-page-plan.md) · 6칸',html:[
+ sec({no:'칸 1 · 불편',layout:'center',eyebrow:'K-웰니스 기획전 「광주식 보양, 한 그릇」',title:'처음 오면 머뭇거리는 골목',pre:pains([['①','먹는 법을 모른다'],['②','몇 마리 시킬지 모른다'],['③','언제 가야 덜 기다리는지 모른다']]),chars:[6],bubble:'오미~ 처음 먹는 한 그릇이라 머뭇거리셨죠? 처음이어도 괜찮아요, 미나리부터 들깨 초장에 콕, 그게 광주식이에요 🦆',btns:['오미에게 물어보기','~나한테 맞는 한 그릇 찾기 ↓']}),
+ sec({no:'칸 2',bg:'white',title:'처음 한 그릇',sub:'처음 온 여행객',pre:steps(['미나리를 국물에 살짝 데친다','들깨 초장에','고기랑 같이 콕'])+`<div class="band" style="margin:0 0 22px">둘이면 반 마리 · 넷이면 한 마리</div>`,chars:[1],bubble:'오미~ 첫 접시는 미나리부터 살짝 데쳐 보세요. 처음이어도 괜찮아요, 천천히 한 그릇 하고 가요 🦆',body:cards(['A1','A4','P2'],3)+cards(['G1','G2','G3'],3),btns:['먹는 법 카드 크게 보기','집에서 한 그릇 세트 보기','~오미 굿즈 보기']}),
+ sec({no:'칸 3',bg:'cream',title:'효도 한 그릇',sub:'부모님 모시고 오는 · 보내는 가족',chars:[7],bubble:'오미~ 첫 국자는 부모님 그릇에 먼저 떠 드리쇼. 둘이면 반 마리, 넷이면 한 마리, 식구 챙기듯 따숩게 한 그릇 허쇼 🦆',body:cards(['A2','A3','A6'],3)+cards(['P2','G4'],2)+`<div class="counter">지금까지 <b>○그릇</b> · 어르신 <b>○그릇</b></div>`,btns:['집에서 한 그릇 세트 보기','한 그릇 적립 보기','~골목 지도 보기']}),
+ sec({no:'칸 4',bg:'white',title:'경기 날 한 그릇',sub:'야구 경기 날 손님 · 밥때 살짝 피해 보세요',chars:[2],bubble:'오미~ 응원 가기 전엔 반 마리로 든든하게, 이겨도 져도 한 그릇! 한 집이 붐비면 옆집도 오리탕 골목이에요 🦆',body:cards(['A5','A3'],2)+cards(['G5','G6'],2),btns:['푸른길 산책 카드 보기','골목 지도 보기']}),
+ sec({no:'칸 5',bg:'beige',eyebrow:'선택',title:'골목에서 하룻밤 (선택)',sub:'골목에서 먹고 → 골목 옆에서 자고 → 둘째 날 한 그릇 더',chars:[5],bubble:'오미~ 한 그릇 먹은 날은 골목 옆에서 푹 쉬어 가세요. 원하는 분만 고르시면 돼요 🦆',body:stayTable+cards(['P3'],1)+`<div class="band">세트 · 1박 2일을 산 분께 굿즈 · 집에서 한 그릇 세트 10% 쿠폰</div>`,btns:['1박 2일 흐름 보기','웰컴 키트 보기','~쿠폰 쓰는 법']}),
+ sec({no:'칸 6',layout:'full',bg:'white',title:'연계 희망(협의 전) · 가격을 확인한 날',sub:'가격은 2026년 11월 20일 판매 페이지 기준이에요. 바뀔 수 있으니 사기 전에 다시 확인하세요',body:listBlock('골목 가게 9곳',['영미오리탕','태화오리탕','영양오리탕','풍년오리탕','영일오리탕','장성오리탕','현대오리탕','영광오리탕','보미약오리탕'],5)+listBlock('택배 · 밀키트',['태화오리탕 스마트스토어 (R1)','전라도미가 (R2)'],2)+listBlock('재료',['산지한입 돌미나리 · 가치드림마켓 (R3)','곡물제작소 들깨가루 · 남도장터 (R4)'],2)+listBlock('숙소 (선택)',['호텔여기어때 광주역점','광주역 20헤르츠','광주 그랑메종 바오밥 1호점','신안동 라베호텔','광주 이지스테이호텔','광주 신안동 에이치에비뉴'],3)+`<div class="row right" style="margin-top:24px"><div class="charcol">${oc(8,'sm')}<div class="bubble">오미~ 소개한 가게와 상품은 아직 함께하자고 이야기하기 전이에요. 다음에도 골목에서 한 그릇 해요 🦆</div></div><div>${notes(['실제 상품 = 연계 희망(협의 전) · 우리가 만든 상품 = 직접 구성(기획 상품) · 예시 가격','수업용 기획안이며, 소개한 가게 · 판매처와 제휴하지 않았습니다'])}</div></div>`,btns:['출처 전체 보기','~맨 위로','~오미에게 물어보기']}),
+]},
+wansoo:{who:'양완수 플랜 (my-page-plan.md) · 8구역',nav:true,html:[
+ sec({no:'1 첫 화면',layout:'center',eyebrow:'K-웰니스 기획전 · 광주 유동 오리요리의 거리',title:'「광주식 보양, 한 그릇」',sub:'오미가 안내하는 광주 오리탕 골목 한 그릇',chars:[1,7],bubble:'오미~ 처음이어도 괜찮아요. 미나리부터 들깨 초장에 콕, 그게 광주식이에요.',btns:['나에게 맞는 한 그릇 찾기','~먹는 법 보기']}),
+ sec({no:'2 먹는 법',layout:'full',bg:'white',title:'광주식 먹는 법',body:`<div class="cards" style="--cols:4">${['① 미나리 먼저','② 들깨 초장','③ 같이 콕','④ 마지막 볶음밥'].map(t=>`<div class="card" style="text-align:center;align-items:center"><div class="ph" style="width:100%">그림 자리</div><div class="nm jua" style="font-size:22px;font-weight:400">${t}</div></div>`).join('')}</div>`}),
+ sec({no:'3 한 그릇 묶음',layout:'full',bg:'cream',title:'한 그릇 묶음 3가지',body:`<div class="bundle3">${[
+   ['효도 한 그릇','가족 · 부모님과',5,'오미~ 부모님 댁에도 뜨끈한 한 그릇을 보내 드려요','집에서 한 그릇 세트','효도 한 상 → 평상 쉼표','오미 앞치마'],
+   ['처음 한 그릇','처음 온 여행객',6,'오미~ 첫 한 그릇은 미나리부터 콕 찍어 묵어 보쇼','집에서 한 그릇 세트','미나리 먼저 한 상 → 푸른길 소화 산책','키링 · 수저받침 · 스티커'],
+   ['경기 날 한 그릇','야구 경기 날',8,'오미~ 경기 끝나면 평상에 앉아서 뜨끈한 한 그릇 하고 가랑께!','없음 (택배 없음)','경기 날 반 마리 + 산책 카드 → 평상 쉼표','에코백 · 푸른길 텀블러']
+  ].map(([t,w,n,b,h,a,g])=>`<div class="bcard">${oc(n,'sm')}<h3>${t}</h3><span class="who2">${w}</span><div class="bubble" style="font-size:16px">${b}</div><dl><dt>집에서</dt><dd>${h}</dd><dt>골목에서</dt><dd>${a}</dd><dt>굿즈</dt><dd>${g}</dd></dl></div>`).join('')}</div>`}),
+ sec({no:'4 집에서 한 그릇',layout:'full',bg:'white',title:'집에서 한 그릇',body:cards(['R1','R2'],2,{R1:{price:'가격은 판매처에서 확인'},R2:{price:'가격은 판매처에서 확인'}})+cards(['P2'],1)+`<div class="band">추가 구매 10% 쿠폰 안내</div>`}),
+ sec({no:'5 오미 굿즈',layout:'full',bg:'cream',title:'오미 굿즈',body:cards(['G1','G2','G3','G4','G5','G6'],3)}),
+ sec({no:'6 골목에 와야 하는 이유',layout:'full',bg:'white',title:'골목에 와야 하는 이유',body:cards(['A1','A2','A3','A4','A5'],3)+`<div class="cards" style="--cols:1;margin-top:16px"><div class="card"><span class="tag alley">골목에서</span><div class="nm">한 집이 붐비면</div><div class="desc">한 집이 붐비면 옆집도 오리탕 골목이에요</div></div></div>`+`<div class="counter">오미 한 그릇 적립 <b>1,264그릇</b> <span style="font-size:13px;font-family:'Noto Sans KR'">(화면 예시 숫자)</span></div><div class="bubble" style="max-width:640px">오미~ 오늘 드신 한 그릇이 이웃 어르신 한 그릇으로 쌓여요.</div>`}),
+]},
+yeomin:{who:'김여민 플랜 (my-page-plan.md) · 8구역',nav2:true,html:[
+ sec({no:'구역 1 · 불편',layout:'center',title:'처음 오면 머뭇거리는 골목',pre:pains([['①','먹는 법을 모른다'],['②','몇 마리 시킬지 모른다'],['③','언제 가야 덜 기다리는지 모른다']]),chars:[6],bubble:'오미~ 처음이어도 괜찮아요. 미나리부터 들깨 초장에 콕, 그게 광주식 한 그릇이에요 🦆',btns:['나한테 맞는 한 그릇 찾기','~광주식 먹는 법']}),
+ sec({no:'구역 2',layout:'full',bg:'white',title:'광주식 먹는 법',body:`<div class="cards" style="--cols:4">${['① 미나리를 국물에 살짝 데쳐요','② 들깨가루 섞은 초장에 콕','③ 오리고기도 같이 콕','④ 둘이면 반 마리, 넷이면 한 마리'].map(t=>`<div class="card" style="text-align:center;align-items:center"><div class="ph" style="width:100%">그림 자리</div><div class="nm">${t}</div></div>`).join('')}</div>`}),
+ sec({no:'구역 3',bg:'cream',title:'처음 한 그릇',sub:'처음 온 여행객',chars:[1],bubble:'오미~ 첫 접시는 미나리부터 살짝 데쳐 보세요. 처음이어도 괜찮아요, 천천히 한 그릇 하고 가요 🦆',body:cards(['A1','A4','P2'],3)+cards(['G1','G2','G3'],3),btns:['집에서 한 그릇 세트 보기','~오미 굿즈 보기']}),
+ sec({no:'구역 4',bg:'white',title:'효도 한 그릇',sub:'부모님 모시고 오는 · 보내는 가족 (뚝배기 국물은 들깨 베이지로 바꿔 쓸 예정)',chars:[7],bubble:'오미~ 첫 국자는 부모님 그릇에 먼저 떠 드리쇼. 식구 챙기듯 따숩게 한 그릇 허쇼 🦆',body:cards(['A2','A3'],2)+cards(['P2','G4'],2)+cards(['R1','R2'],2),btns:['집에서 한 그릇 세트 보기','~골목 지도 보기']}),
+ sec({no:'구역 5',bg:'cream',title:'경기 날 한 그릇',sub:'야구 경기 날 손님',chars:[2],bubble:'오미~ 응원 가기 전엔 반 마리로 든든하게, 이겨도 져도 한 그릇! 한 집이 붐비면 옆집도 오리탕 골목이에요 🦆',body:cards(['A5','A3'],2)+cards(['G5','G6'],2),btns:['골목 지도 보기']}),
+ sec({no:'구역 6',bg:'white',title:'골목에 와야 할 수 있는 것',sub:'골목 한 상은 할인 없이 가게 가격 그대로, 대신 오미 선물',chars:[5],bubble:'오미~ 오늘 드신 한 그릇이 이웃 어르신 한 그릇으로 쌓여요 🦆',body:cards(['A1','A2','A3','A4','A5','A6'],3)+`<div class="counter">지금까지 <b>○그릇</b> · 어르신 <b>○그릇</b></div>`}),
+ sec({no:'구역 7',bg:'beige',eyebrow:'선택',title:'오미랑 골목 1박 2일 (선택)',chars:[5],bubble:'오미~ 한 그릇 먹은 날은 골목 옆에서 푹 쉬어 가세요 🦆',body:stayTable+cards(['P3'],1)+`<div class="band">추가 구매 10% 쿠폰</div>`}),
+ sec({no:'구역 8',layout:'full',bg:'white',title:'연계 희망(협의 전) · 가격 확인한 날',sub:'가격은 2026년 11월 20일 판매 페이지 기준이에요',body:listBlock('실제 가게 · 판매처 (같은 크기로)',['태화오리탕 스마트스토어','전라도미가','산지한입 돌미나리 · 가치드림마켓','곡물제작소 들깨가루 · 남도장터'],4)+`<div class="row right" style="margin-top:24px"><div class="charcol">${oc(8,'sm')}<div class="bubble">오미~ 다음에도 골목에서 한 그릇 해요 🦆</div></div><div>${notes(['수업용 기획안이며, 소개한 가게 · 판매처와 제휴하지 않았습니다'])}</div></div>`}),
+]},
+};
+const p=new URLSearchParams(location.search).get('p')||'jun';
+const P=PLANS[p];
+let nav='';
+if(P.nav) nav=`<div class="nav"><div class="logo">${oc(6,'',44)}오미네 골목</div><div class="menu"><span>기획전</span><span>먹는 법</span><span>한 그릇 묶음</span><span>집에서 한 그릇</span><span>오미 굿즈</span><span>골목에서</span></div><span class="cta">묶음 고르기</span></div>`;
+if(P.nav2) nav=`<div class="nav"><div class="logo">「광주식 보양, 한 그릇」</div><div class="menu"><span>묶음</span><span>상품</span><span>골목에서</span><span>1박 2일</span></div><span class="cta">한 그릇 고르기</span></div>`;
+document.getElementById('app').innerHTML=`<div class="who"><span>시안 · ${P.who}</span><span>팀 design/products.md 기준 · 2026-11-20 · 이미지 시안 (실제 페이지 아님)</span></div>${nav}${P.html.join('')}${footer}`;
+</script>
+</body>
+</html>
