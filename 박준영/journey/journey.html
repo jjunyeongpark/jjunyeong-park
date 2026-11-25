@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<style>
+body{margin:0;background:#fcfcfb;font-family:"Malgun Gothic",sans-serif;color:#0b0b0b}
+#cap{width:1680px;padding:28px 32px;box-sizing:border-box}
+h1{font-size:25px;margin:0 0 4px}
+.sub{font-size:12.5px;color:#52514e;margin:0 0 14px;line-height:1.6}
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:start}
+.col{background:#fff;border:1px solid #e1e0d9;border-radius:12px;overflow:hidden}
+.hd{background:#2C2C2A;color:#fff;padding:10px 12px}
+.hd.me{background:#185FA5}
+.hd b{font-size:17px}
+.hd small{display:block;font-size:12px;color:#D3D1C7;margin-top:2px;line-height:1.45}
+.sec{padding:9px 12px;border-top:1px solid #efeee9;font-size:12px;line-height:1.55;word-break:keep-all}
+.lab{font-weight:700;color:#5F5E5A;font-size:11.5px;margin-bottom:3px}
+.low{background:#FCEBEB;color:#791F1F;border-radius:6px;padding:5px 8px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:11.5px;table-layout:fixed}
+th{color:#5F5E5A;font-weight:700;text-align:left;padding:3px 2px;border-bottom:1px solid #e1e0d9}
+td{padding:4px 2px;border-bottom:1px solid #f1efe8;vertical-align:top;word-break:keep-all}
+td.n,th.n{text-align:center;width:34px}
+td.s,th.s{text-align:center;width:40px}
+td.h,th.h{text-align:center;width:38px}
+.red{color:#A32D2D;font-weight:700}
+.p{display:inline-block;border-radius:5px;padding:0 4px;font-weight:700;font-size:11px}
+.hi{background:#EAF3DE;color:#27500A}.md{background:#FAEEDA;color:#633806}.lo{background:#F1EFE8;color:#5F5E5A}
+.top{background:#F7F6FE}
+.top ol{margin:0;padding-left:17px}
+.top li{margin-bottom:3px}
+.top .lab{color:#534AB7}
+.q{background:#F1EFE8;border-radius:6px;padding:6px 8px;font-size:11.5px}
+.na{color:#993556;font-weight:700}
+.foot{font-size:11.5px;color:#5F5E5A;margin-top:12px;line-height:1.6}
+.leg{font-size:12px;color:#52514e;margin:0 0 10px}
+</style></head><body><div id="cap">
+<h1>팀 고객 여정 4개 — 나란히 보기 · 불편 빈도 · 강도 · 해결 가능성</h1>
+<p class="sub">합치지 않음 · 각자의 리뷰 csv로만 셈 · 숫자는 서로 더하지 않음 · 팀 저장소 main 조회일 2026-11-25 · 정리 박준영 (팀 확인 전)</p>
+<p class="leg">빈도 = 그 불편을 적은 리뷰 수 · 강도 = 그 리뷰들의 평균 별점 (낮을수록 셈, <span class="red">2.0 이하 빨강</span>, 괄호 = 별점 있는 건수) · 해결 <span class="p hi">높음</span> 우리 안내로 풀림 <span class="p md">중간</span> 가게 협의 필요 <span class="p lo">낮음</span> 가게 운영·맛·시설</p>
+<div class="cols">
+
+<div class="col">
+<div class="hd"><b>김여민</b><small>서울 20대 후반 여성 야구팬, 친구와 1박 2일 · 타겟 3번 야구 + 2번 여행 · 리뷰 401건</small></div>
+<div class="sec"><div class="lab">초안 세 문장</div>경기 다음 날 골목 오리탕을 먹고 부모님 몫을 포장해 간다. 리뷰 불편은 4단계(오리탕 먹기)에 몰렸고 이동 단계는 (상상)이다. 끝은 32 · 17 · 8건.</div>
+<div class="sec"><div class="lab">기분이 가장 낮은 단계</div><div class="low">3 · 6단계 이동 (보통, 상상)</div><div style="margin-top:4px">근거: 리뷰 없음 → 짐작. 리뷰 불편은 4단계 최다<br><span class="na">확인 못 함</span>: 0 · 3 · 5 · 6 · 7단계 불편</div></div>
+<div class="sec"><div class="lab">불편한 점</div><table>
+<tr><th>불편</th><th class="n">빈도</th><th class="s">강도</th><th class="h">해결</th></tr>
+<tr><td>대기 · 웨이팅</td><td class="n">21</td><td class="s">3.15<br>(17)</td><td class="h"><span class="p md">중간</span></td></tr>
+<tr><td>잡내 · 냄새 *</td><td class="n">27</td><td class="s">2.89<br>(14)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>불친절 · 주문 누락</td><td class="n">16</td><td class="s red">1.85<br>(10)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>브레이크 · 마감 안내 부족</td><td class="n">11</td><td class="s">2.50<br>(6)</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>가격이 있다</td><td class="n">9</td><td class="s">3.75<br>(4)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>블로그 · 추천만 믿고 실망</td><td class="n">2</td><td class="s red">1.50<br>(2)</td><td class="h"><span class="p md">중간</span></td></tr>
+<tr><td>먹는 법 안내 없음</td><td class="n">1</td><td class="s red">1.00<br>(1)</td><td class="h"><span class="p hi">높음</span></td></tr>
+</table><div style="font-size:11px;color:#5F5E5A;margin-top:3px">* 검색어에 "잡내 없음" 같은 칭찬도 섞임 · 김여민 파일 숫자와 1~2건 차이(불친절 17 · 마감 12 · 가격 7)</div></div>
+<div class="sec top"><div class="lab">Top 3</div><ol><li><b>브레이크 · 마감 안내</b> — 11건 · 2.50 · 높음</li><li><b>대기 · 웨이팅</b> — 21건 · 3.15 · 중간</li><li><b>불친절 · 주문 누락</b> — 가장 셈 1.85 · 낮음 → 가게에 전할 것</li></ol></div>
+<div class="sec"><div class="lab">직접 연 리뷰 #25 (별점 0.5)</div><div class="q">"11시전에 오픈런 했지만 결국 1시간 이상 기다려서 먹었습니다. 중요한건 웨이팅 관리가 전혀 안됩니다."</div>→ 대기에 들어가는 게 맞음</div>
+</div>
+
+<div class="col">
+<div class="hd me"><b>박준영</b><small>혜진 씨 (30~40대 여성, 상상), 아이와 옴 → 부모님께 택배 · 타겟 1번 가족 · 리뷰 198건</small></div>
+<div class="sec"><div class="lab">초안 세 문장</div>광주역 몽골텐트 → 걸어서 10분 골목 가게 → 가게 앞 QR로 「효도 한 그릇 세트」. 기분은 가게 안 대기 · 주문에서 가장 낮고 식사는 좋다. 끝은 14 · 10 · 5건, 안 온다 5건은 모두 가게 안 문제.</div>
+<div class="sec"><div class="lab">기분이 가장 낮은 단계</div><div class="low">4. 대기 · 주문 (나쁨)</div><div style="margin-top:4px">근거: 대기 5 · 주문 누락 6 · 불친절 5 · 신발 3건<br><span class="na">확인 못 함</span>: 0단계 불편 · 2 텐트 · 3 걷는 길 · 7 택배</div></div>
+<div class="sec"><div class="lab">불편한 점</div><table>
+<tr><th>불편</th><th class="n">빈도</th><th class="s">강도</th><th class="h">해결</th></tr>
+<tr><td>주문 누락 · 순서</td><td class="n">6</td><td class="s">2.40<br>(5)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>고기 질김 · 잡내</td><td class="n">6</td><td class="s red">0.92<br>(6)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>대기 길고 관리 안 됨</td><td class="n">5</td><td class="s red">1.20<br>(5)</td><td class="h"><span class="p md">중간</span></td></tr>
+<tr><td>불친절</td><td class="n">5</td><td class="s">2.30<br>(5)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>유명한 집 붐벼 옆집으로</td><td class="n">4</td><td class="s">3.75<br>(4)</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>신발 벗는 방 · 도난</td><td class="n">3</td><td class="s red">0.83<br>(3)</td><td class="h"><span class="p md">중간</span></td></tr>
+<tr><td>여름 더움</td><td class="n">3</td><td class="s">2.67<br>(3)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>마감 · 브레이크 눈치, 안내 없음</td><td class="n">3</td><td class="s red">1.75<br>(2)</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>블로그만 믿고 실망</td><td class="n">2</td><td class="s red">1.50<br>(2)</td><td class="h"><span class="p md">중간</span></td></tr>
+<tr><td>뼈 바르기 · 뼈그릇 없음</td><td class="n">2</td><td class="s">3.00<br>(2)</td><td class="h"><span class="p md">중간</span></td></tr>
+<tr><td>가격 오름</td><td class="n">2</td><td class="s">4.50<br>(1)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>먹는 법 안내 없음</td><td class="n">1</td><td class="s red">1.00<br>(1)</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>집게 위생</td><td class="n">1</td><td class="s">-</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>계산 늦음</td><td class="n">1</td><td class="s">5.00<br>(1)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+</table></div>
+<div class="sec top"><div class="lab">Top 3</div><ol><li><b>대기 길고 관리 안 됨</b> — 5건 · 1.20 · 중간</li><li><b>신발 벗는 방 (좌식)</b> — 3건 · 가장 셈 0.83 · 중간</li><li><b>마감 · 브레이크 안내</b> — 3건 · 1.75 · 높음</li></ol><div style="font-size:11px;margin-top:3px">질김 · 잡내 (6건 · 0.92 · 낮음) → 가게에 전할 것</div></div>
+<div class="sec"><div class="lab">직접 연 리뷰 #37 (별점 1.0)</div><div class="q">"1. 먹는 방법 안내가 없다 2. 질기고 퍽퍽하다" · "신발을 왜 벗어야하는지 모르겠다"</div>→ 한 리뷰가 네 불편에 모두 들어감</div>
+</div>
+
+<div class="col">
+<div class="hd"><b>안시현</b><small>지은 씨 (34살, 상상), 아빠 · 엄마 모시고 차로 · 타겟 1번 가족 · 리뷰 401건 중 가족 동행</small></div>
+<div class="sec"><div class="lab">초안 세 문장</div>무릎이 불편한 아빠와 엄마를 모시고 와서 오리탕을 먹는다. 들어가기(좌식 · 대기)와 주문 · 요청에서 기분이 상하고, 먹는 것은 좋다. 끝은 5 · 4 · 3건 (가족 리뷰만).</div>
+<div class="sec"><div class="lab">기분이 가장 낮은 단계</div><div class="low">3. 들어가기 · 4. 주문 · 요청 (나쁨)</div><div style="margin-top:4px">근거: #201 #362 #365 · #24 #54 #201 · #28 #71<br><span class="na">확인 못 함</span>: 0단계 기분 · 불편, 6단계 불편</div></div>
+<div class="sec"><div class="lab">불편한 점</div><table>
+<tr><th>불편</th><th class="n">빈도</th><th class="s">강도</th><th class="h">해결</th></tr>
+<tr><td>들어가기: 대기 · 좌식이라 신발 벗다 아버지 넘어짐 · 자리 *</td><td class="n">3</td><td class="s">4.00<br>(2)</td><td class="h"><span class="p md">중간</span></td></tr>
+<tr><td>인원별 한 마리 · 반 마리 주문 실랑이</td><td class="n">3</td><td class="s red">1.25<br>(2)</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>요청이 늦고 불친절</td><td class="n">2</td><td class="s red">0.50<br>(1)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>다시 안 옴: 불친절 · 위생 · 맛</td><td class="n">3</td><td class="s red">1.00<br>(1)</td><td class="h"><span class="p lo">낮음</span></td></tr>
+<tr><td>블로그만 보고 기대 커짐</td><td class="n">1</td><td class="s">2.00<br>(1)</td><td class="h"><span class="p md">중간</span></td></tr>
+</table><div style="font-size:11px;color:#5F5E5A;margin-top:3px">* 4점 2건은 옆집으로 옮겨 만족한 리뷰, 넘어진 #201은 별점 없음 → 강도가 약하게 보임</div></div>
+<div class="sec top"><div class="lab">Top 3</div><ol><li><b>인원별 주문 실랑이</b> — 1.25 · 높음 (안내 카드)</li><li><b>들어가기 (좌식 · 신발 · 대기)</b> — 3건 · 중간 · 부모님 안전 문제</li><li><b>요청이 늦고 불친절</b> — 가장 셈 0.50 · 낮음 → 가게에 전할 것</li></ol></div>
+<div class="sec"><div class="lab">직접 연 리뷰 #201 (별점 없음)</div><div class="q">"신발 벗고 들어가시다가 넘어지셨는데"</div>→ 좌식 불편 맞음 · 별점이 비어 강도 평균에서 빠짐</div>
+</div>
+
+<div class="col">
+<div class="hd"><b>양완수</b><small>맛집 탐방 아저씨 무리 4명 (가정) · 타겟 3개 밖 · 리뷰 298건 (여정에는 리뷰 근거 없음)</small></div>
+<div class="sec"><div class="lab">초안 세 문장</div>기획전 사이트를 알기 전과 알게 된 후를 비교한다. 알기 전에는 가게 고르기와 카페 · 숙소 찾기가 가장 번거롭고(-2), 사이트를 알면 한곳에서 해결된다(+4). 리뷰 대신 사이트 시안 기능으로 예상했다.</div>
+<div class="sec"><div class="lab">기분이 가장 낮은 단계</div><div class="low">가게 고르기 · 카페 · 숙소 (-2점)</div><div style="margin-top:4px">근거: 리뷰 없음 (가정). csv로 보면 고르기 고민 3건(5.00), 카페 · 숙소 0건<br><span class="na">확인 못 함</span>: 정보 찾기 · 카페 · 숙소, 0단계 · 끝 세 갈래 없음</div></div>
+<div class="sec"><div class="lab">불편한 점</div><table>
+<tr><th>불편</th><th class="n">빈도</th><th class="s">강도</th><th class="h">해결</th></tr>
+<tr><td>정보 찾기: 블로그 · 광고 섞임</td><td class="n na">0</td><td class="s">-</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>가게 고르기 번거로움</td><td class="n">3</td><td class="s">5.00<br>(3)</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>카페 · 숙소 따로 검색</td><td class="n na">0</td><td class="s">-</td><td class="h"><span class="p hi">높음</span></td></tr>
+<tr><td>무리 손님의 대기 (분석 4번) *</td><td class="n">20</td><td class="s">3.48<br>(20)</td><td class="h"><span class="p md">중간</span></td></tr>
+</table><div style="font-size:11px;color:#5F5E5A;margin-top:3px">0 = 양완수 csv에서 확인 못 함 · * "대기 없이" 같은 말도 섞임</div></div>
+<div class="sec top"><div class="lab">Top 3</div><ol><li><b>무리 손님의 대기</b> — 20건 · 3.48 · 중간</li><li><b>가게 고르기</b> — 3건 · 5.00 · 높음</li><li><span class="na">없음</span> — 나머지는 리뷰 0건, 근거를 더 찾아야 함</li></ol></div>
+<div class="sec"><div class="lab">직접 연 리뷰 #43 (별점 5)</div><div class="q">"풍년오리탕과 다른 유명한 오리탕집을 고민했어요."</div>→ 고민은 맞지만 5점 만족이라 불편은 작음</div>
+</div>
+</div>
+<p class="foot">나란히 보면: 넷 모두 Top 3에 대기나 가게 안 응대가 있음 · 해결 '높음'은 대부분 안내(마감 정리 · 주문 카드 · 먹는 법 카드 · 오미 지도) · 강도가 가장 센 불편(질김 0.92 · 불친절 0.50 · 1.85)은 해결 '낮음' → 가게와 따로 이야기 · 리뷰는 각자 csv에서 열어 확인(사이트 페이지는 다시 열지 않음) · 박준영 #37과 김여민 #38은 같은 리뷰지만 합치지 않음</p>
+</div></body></html>
