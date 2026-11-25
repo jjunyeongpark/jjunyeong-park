@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>고객 여정 지도 — 불편 Top 3</title>
+<style>
+:root{
+  --ink:#2C2C2A; --mute:#6B6A65; --line:#E5E3DB; --bg:#F7F6F2;
+  --green:#3B6D11; --green-l:#EAF3DE;
+  --kim:#378ADD; --park:#D85A30; --ahn:#7F77DD; --yang:#1D9E75;
+  --s1:#791F1F; --s2:#A32D2D; --s3:#E24B4A; --s4:#EF9F27; --s5:#97C459;
+}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;font-family:"Malgun Gothic","맑은 고딕",sans-serif;color:var(--ink)}
+.page{width:1600px;margin:0 auto;padding:28px 32px 30px}
+header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}
+h1{font-size:30px;margin:0;letter-spacing:-0.5px}
+h1 small{font-size:16px;font-weight:normal;color:var(--mute);margin-left:8px}
+.meta{font-size:13px;color:var(--mute);text-align:right;line-height:1.6}
+.who{display:flex;gap:18px;margin:0 0 18px;font-size:14px}
+.who span{display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:20px;background:var(--bg)}
+.who i{width:22px;height:22px;border-radius:50%;color:#fff;font-style:normal;font-size:12px;font-weight:bold;display:inline-flex;align-items:center;justify-content:center}
+.who .dash{background:#fff!important;border:2px dashed var(--yang);color:var(--yang)}
+
+.grid{display:grid;grid-template-columns:130px repeat(5,minmax(0,1fr));column-gap:12px;row-gap:10px}
+.lab{font-size:14px;font-weight:bold;color:var(--mute);padding-top:12px;text-align:right;padding-right:6px}
+.lab small{display:block;font-weight:normal;font-size:11.5px;margin-top:3px}
+
+/* stage chevrons */
+.stage{position:relative;background:var(--green);color:#fff;height:58px;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:bold;clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%,18px 50%)}
+.stage:first-of-type{clip-path:polygon(0 0,calc(100% - 18px) 0,100% 50%,calc(100% - 18px) 100%,0 100%)}
+.stage b{display:inline-flex;width:26px;height:26px;border-radius:50%;background:#fff;color:var(--green);font-size:14px;align-items:center;justify-content:center;margin-right:9px}
+.stage.end{background:#5F5E5A}
+.stage.end b{color:#5F5E5A}
+
+.cell{background:var(--bg);border-radius:10px;padding:12px 14px;font-size:14.5px;line-height:1.5}
+.cell .src{display:block;font-size:12px;color:var(--mute);margin-top:4px}
+.imag{border:1.5px dashed #B4B2A9;background:#fff;color:var(--mute)}
+
+/* mood */
+.mood{grid-column:2 / span 5;background:var(--bg);border-radius:12px;padding:6px 0}
+.mood svg{display:block;width:100%;height:250px}
+
+/* pain cards */
+.card{background:#fff;border:2px solid var(--green);border-radius:12px;padding:14px 16px;font-size:14px;position:relative}
+.card.span2{grid-column:span 2}
+.card .top{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.badge{flex:none;width:38px;height:38px;border-radius:50%;background:var(--green);color:#fff;font-size:20px;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.card h3{margin:0;font-size:18px}
+.card .tn{font-size:12px;color:var(--mute);margin:0 0 10px 48px}
+.hi{background:var(--green-l);color:#27500A;border-radius:4px;padding:1px 6px;font-weight:bold;font-size:11.5px}
+.mid{background:#FAEEDA;color:#633806;border-radius:4px;padding:1px 6px;font-weight:bold;font-size:11.5px}
+.row{display:grid;grid-template-columns:24px 112px 1fr;align-items:center;gap:6px;margin:5px 0}
+.dot{width:22px;height:22px;border-radius:50%;color:#fff;font-size:11.5px;font-weight:bold;display:flex;align-items:center;justify-content:center}
+.bar{height:14px;border-radius:3px}
+.num{font-variant-numeric:tabular-nums}
+.chips{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.chip{font-size:12px;background:#F1EFE8;border-radius:12px;padding:2px 9px;color:#444441}
+.chip.lbl{background:none;padding:0 2px 0 0;color:var(--mute)}
+.note{font-size:12px;color:var(--mute);margin-top:8px;line-height:1.5}
+.half{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.half > div + div{border-left:1px dashed #D3D1C7;padding-left:18px}
+.half h4{margin:0 0 6px;font-size:14.5px}
+
+/* outcome */
+.out{background:#fff;border:2px solid #B4B2A9;border-radius:12px;padding:14px 16px;font-size:14px}
+.out h3{margin:0 0 2px;font-size:18px}
+.out .tn{font-size:12px;color:var(--mute);margin-bottom:10px}
+.srow{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:center;margin:9px 0}
+.stack{display:flex;height:22px;border-radius:4px;overflow:hidden;font-size:11.5px;color:#fff;font-weight:bold}
+.stack span{display:flex;align-items:center;justify-content:center}
+.ok{background:#3B6D11}.rec{background:#EF9F27}.no{background:#A32D2D}
+.none{height:22px;border:1.5px dashed #B4B2A9;border-radius:4px;font-size:12px;color:var(--mute);display:flex;align-items:center;justify-content:center}
+.okk{display:flex;gap:8px;font-size:11px;white-space:nowrap;color:var(--mute);margin-top:6px}
+.okk i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+
+/* actions */
+.act{background:#E6F1FB;border-radius:10px;padding:11px 14px;font-size:13.5px;line-height:1.5;color:#0C447C}
+.act.span2{grid-column:span 2}
+.act .prop{background:#FBEAF0;color:#72243E;border-radius:4px;padding:0 5px;font-size:11.5px;font-weight:bold}
+.act.empty{background:none;border:1.5px dashed #D3D1C7;color:var(--mute)}
+
+footer{margin-top:20px;display:flex;gap:28px;flex-wrap:wrap;font-size:12.5px;color:var(--mute);border-top:1px solid var(--line);padding-top:14px}
+footer .lg{display:flex;align-items:center;gap:6px}
+footer .lg i{display:inline-block;width:14px;height:10px;border-radius:2px}
+.srcs{font-size:12px;color:var(--mute);margin-top:10px;line-height:1.7}
+</style></head>
+<body><div class="page">
+
+<header>
+  <h1>고객 여정 지도 <small>불편 Top 3 · journey/pain-top3.md를 그림 한 장으로</small></h1>
+  <div class="meta">정리 박준영 · 2026-11-25 · 팀 확인 전<br>네 사람의 타겟은 합치지 않고, 건수는 서로 더하지 않았습니다</div>
+</header>
+
+<div class="who">
+  <span><i style="background:var(--kim)">김</i>김여민 · 서울 20대 후반 야구팬</span>
+  <span><i style="background:var(--park)">박</i>박준영 · 혜진 씨, 아이와 온 가족</span>
+  <span><i style="background:var(--ahn)">안</i>안시현 · 지은 씨, 부모님 모신 딸</span>
+  <span><i class="dash">양</i>양완수 · 맛집 탐방 아저씨 4명 (가정)</span>
+</div>
+
+<div class="grid">
+  <!-- 단계 -->
+  <div class="lab">단계</div>
+  <div class="stage"><b>1</b>가게 고르기</div>
+  <div class="stage"><b>2</b>기다리기 · 들어가기</div>
+  <div class="stage"><b>3</b>주문하기</div>
+  <div class="stage"><b>4</b>먹기</div>
+  <div class="stage end"><b>5</b>다녀온 뒤</div>
+
+  <!-- 하는 일 -->
+  <div class="lab">고객이 하는 일</div>
+  <div class="cell">유명한 오리탕집 여러 곳 중 어디로 갈지 고른다</div>
+  <div class="cell">가게 앞에서 줄을 서고 자리에 들어가 앉는다</div>
+  <div class="cell">인원에 맞춰 한 마리 · 반 마리를 고른다</div>
+  <div class="cell">미나리를 데쳐 초장 · 들깨 소스에 찍어 먹는다 <span style="color:var(--mute)">(안)</span></div>
+  <div class="cell">다시 오거나, 남에게 권하거나, 다시 안 온다고 리뷰를 남긴다</div>
+
+  <!-- 만나는 곳 -->
+  <div class="lab">만나는 곳</div>
+  <div class="cell">추천 · 리뷰 <span style="color:var(--mute)">(양)</span><br>가게 간판 <span style="color:var(--mute)">(박)</span><span class="src">김: 오미 홈페이지 (상상)</span></div>
+  <div class="cell">대기줄 · 신발 벗는 방 <span style="color:var(--mute)">(박)</span><span class="src">김: 유동 오리탕 골목</span></div>
+  <div class="cell">직원(이모님) · 메뉴 <span style="color:var(--mute)">(박)</span><span class="src">김: 가게 사장님 · 직원</span></div>
+  <div class="cell">식탁 · 오리탕 냄비 · 미나리 · 들깨초장 <span style="color:var(--mute)">(박)</span></div>
+  <div class="cell">부모님 집 · 휴대폰 메시지 <span style="color:var(--mute)">(김)</span></div>
+
+  <!-- 기분 -->
+  <div class="lab">기분</div>
+  <div class="mood">
+    <svg viewBox="0 0 1000 250" preserveAspectRatio="none">
+      <!-- guides -->
+      <line x1="0" y1="45" x2="1000" y2="45" stroke="#D3D1C7" stroke-dasharray="3 5"/>
+      <line x1="0" y1="125" x2="1000" y2="125" stroke="#D3D1C7" stroke-dasharray="3 5"/>
+      <line x1="0" y1="205" x2="1000" y2="205" stroke="#D3D1C7" stroke-dasharray="3 5"/>
+      <rect x="800" y="0" width="200" height="250" fill="#EFEDE6"/>
+      <!-- 김: 1 좋음(2단계) · 2,3,4 좋음(4단계) -->
+      <path d="M90,45 L290,45 L490,45 L690,45" fill="none" stroke="#378ADD" stroke-width="4" vector-effect="non-scaling-stroke"/>
+      <!-- 박: 1 보통 · 2 나쁨 · 3 나쁨 · 4 좋음 -->
+      <path d="M100,125 C160,125 230,205 300,205 L500,205 C580,205 620,57 700,57" fill="none" stroke="#D85A30" stroke-width="4" vector-effect="non-scaling-stroke"/>
+      <!-- 안: 2 나쁨 · 3 나쁨 · 4 좋음 -->
+      <path d="M310,217 L510,217 C590,217 630,69 710,69" fill="none" stroke="#7F77DD" stroke-width="4" vector-effect="non-scaling-stroke"/>
+      <!-- 세 갈래 화살표 -->
+      <path d="M730,60 C770,60 790,45 830,45" fill="none" stroke="#3B6D11" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <path d="M730,60 C770,60 790,125 830,125" fill="none" stroke="#EF9F27" stroke-width="3" vector-effect="non-scaling-stroke"/>
+      <path d="M730,60 C770,60 790,205 830,205" fill="none" stroke="#A32D2D" stroke-width="3" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <!-- HTML overlay markers (keeps circles round) -->
+  </div>
+</div>
+
+<!-- overlay markers positioned over the mood svg -->
+<style>
+.mk{position:absolute;width:26px;height:26px;border-radius:50%;color:#fff;font-size:12px;font-weight:bold;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.08);transform:translate(-50%,-50%)}
+.mk.d{background:#fff!important;border:2px dashed var(--yang);color:var(--yang)}
+.tag{position:absolute;font-size:12px;color:var(--mute);white-space:nowrap;transform:translate(-50%,0)}
+.br{position:absolute;font-size:14px;font-weight:bold;transform:translate(0,-50%)}
+.mwrap{position:relative}
+</style>
+
+<div class="grid" style="margin-top:-260px;pointer-events:none">
+  <div class="mwrap" style="height:250px;margin-top:6px"><span class="br" style="right:6px;top:45px;color:#3B6D11;font-size:13px">좋음 ▲</span><span class="br" style="right:6px;top:125px;color:#6B6A65;font-size:13px">보통</span><span class="br" style="right:6px;top:205px;color:#A32D2D;font-size:13px">나쁨 ▼</span></div>
+  <div class="mwrap" style="grid-column:2 / span 5;height:250px;margin-top:6px">
+    <!-- x = % of mood width; columns centers 10,30,50,70,90 ; y px -->
+    <span class="mk" style="left:9%;top:45px;background:var(--kim)">김</span>
+    <span class="mk" style="left:29%;top:45px;background:var(--kim)">김</span>
+    <span class="mk" style="left:49%;top:45px;background:var(--kim)">김</span>
+    <span class="mk" style="left:69%;top:45px;background:var(--kim)">김</span>
+    <span class="tag" style="left:39%;top:14px">김은 2~4단계를 한 단계(4단계 좋음)로 적음</span>
+
+    <span class="mk" style="left:10%;top:125px;background:var(--park)">박</span>
+    <span class="mk" style="left:30%;top:205px;background:var(--park)">박</span>
+    <span class="mk" style="left:50%;top:205px;background:var(--park)">박</span>
+    <span class="mk" style="left:70%;top:57px;background:var(--park)">박</span>
+    <span class="tag" style="left:40%;top:170px">박 4단계 (대기 · 주문) 나쁨</span>
+
+    <span class="mk" style="left:31%;top:217px;background:var(--ahn)">안</span>
+    <span class="mk" style="left:51%;top:217px;background:var(--ahn)">안</span>
+    <span class="mk" style="left:71%;top:69px;background:var(--ahn)">안</span>
+    <span class="tag" style="left:41%;top:228px">안 3 · 4단계 나쁨</span>
+
+    <span class="mk d" style="left:8%;top:205px">양</span>
+    <span class="tag" style="left:10%;top:220px">양: 번거로움 -2 (가정)</span>
+    <span class="tag" style="left:10%;top:62px">안: 고르기 단계 없음</span>
+    <span class="tag" style="left:30%;top:94px;color:var(--yang)">양: 2단계부터는 여정에 없음</span>
+
+    <span class="br" style="left:84%;top:45px;color:#3B6D11">다시 온다</span>
+    <span class="br" style="left:84%;top:125px;color:#854F0B">권한다</span>
+    <span class="br" style="left:84%;top:205px;color:#A32D2D">다시 안 온다</span>
+  </div>
+</div>
+
+<div class="grid" style="margin-top:20px">
+  <!-- 불편한 점 -->
+  <div class="lab">불편한 점<small>빈도 · 강도<br>· 리뷰 번호</small></div>
+
+  <!-- 1 고르기 : Top 3 = 3 -->
+  <div class="card">
+    <div class="top"><div class="badge">3</div><h3>가게 고르기 고민</h3></div>
+    <div class="tn">total 9번 · <span class="hi">해결 높음</span></div>
+    <div class="row"><div class="dot" style="background:var(--yang)">양</div><div class="num">3건 · ★5.00</div><div class="bar" style="width:12px;background:var(--s5)"></div></div>
+    <div class="chips"><span class="chip lbl">리뷰</span><span class="chip">#43</span><span class="chip">#118</span><span class="chip">#170</span></div>
+    <div class="note">모두 고민 끝에 만족한 5점이라 강도는 작음</div>
+  </div>
+
+  <!-- 2 기다리기 : Top 3 = 1 -->
+  <div class="card">
+    <div class="top"><div class="badge">1</div><h3>대기 · 웨이팅</h3></div>
+    <div class="tn">total 1번 · <span class="mid">해결 중간</span></div>
+    <div class="row"><div class="dot" style="background:var(--kim)">김</div><div class="num">21건 · ★3.15</div><div class="bar" style="width:84px;background:var(--s4)"></div></div>
+    <div class="row"><div class="dot" style="background:var(--park)">박</div><div class="num">5건 · ★1.20</div><div class="bar" style="width:20px;background:var(--s2)"></div></div>
+    <div class="row"><div class="dot" style="background:var(--ahn)">안</div><div class="num">3건 · ★4.00 *</div><div class="bar" style="width:12px;background:var(--s5)"></div></div>
+    <div class="row"><div class="dot" style="background:var(--yang)">양</div><div class="num">20건 · ★3.48</div><div class="bar" style="width:80px;background:var(--s4)"></div></div>
+    <div class="chips"><span class="chip lbl">리뷰</span><span class="chip">김 #25</span><span class="chip">박 #53</span><span class="chip">박 #42</span></div>
+    <div class="note">* 넘어진 #201은 별점이 없어 평균에서 빠짐</div>
+  </div>
+
+  <!-- 3+4 주문 · 먹기 : Top 3 = 2 -->
+  <div class="card span2">
+    <div class="top"><div class="badge">2</div><h3>먹는 법 · 주문 안내 없음</h3></div>
+    <div class="tn">total 5번 + 6번 · <span class="hi">해결 높음</span> · 해결 방법이 같아 묶음 (건수는 더하지 않음)</div>
+    <div class="half">
+      <div>
+        <h4>6번 인원별 주문 실랑이</h4>
+        <div class="row"><div class="dot" style="background:var(--ahn)">안</div><div class="num">3건 · ★1.25</div><div class="bar" style="width:12px;background:var(--s2)"></div></div>
+        <div class="chips"><span class="chip lbl">리뷰</span><span class="chip">#24</span><span class="chip">#54</span><span class="chip">#201</span></div>
+        <div class="note">지금은 가게가 반 마리 두 개를 권함 (#54)</div>
+      </div>
+      <div>
+        <h4>5번 먹는 법 안내 없음</h4>
+        <div class="row"><div class="dot" style="background:var(--kim)">김</div><div class="num">1건 · ★1.00</div><div class="bar" style="width:4px;background:var(--s1)"></div></div>
+        <div class="row"><div class="dot" style="background:var(--park)">박</div><div class="num">1건 · ★1.00</div><div class="bar" style="width:4px;background:var(--s1)"></div></div>
+        <div class="chips"><span class="chip lbl">리뷰</span><span class="chip">김 #38 = 박 #37 (같은 리뷰)</span></div>
+        <div class="note">지금은 친절한 가게가 직접 알려 줌 (#355)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 다녀온 뒤 : 세 갈래 -->
+  <div class="out">
+    <h3>세 갈래</h3>
+    <div class="tn">각자 리뷰 건수 · 더하지 않음</div>
+    <div class="srow"><div class="dot" style="background:var(--kim)">김</div>
+      <div class="stack"><span class="ok" style="width:56%">32</span><span class="rec" style="width:30%">17</span><span class="no" style="width:14%">8</span></div></div>
+    <div class="srow"><div class="dot" style="background:var(--park)">박</div>
+      <div class="stack"><span class="ok" style="width:48%">14</span><span class="rec" style="width:35%">10</span><span class="no" style="width:17%">5</span></div></div>
+    <div class="srow"><div class="dot" style="background:var(--ahn)">안</div>
+      <div class="stack"><span class="ok" style="width:42%">5</span><span class="rec" style="width:33%">4</span><span class="no" style="width:25%">3</span></div></div>
+    <div class="srow"><div class="dot" style="background:#fff;border:2px dashed var(--yang);color:var(--yang)">양</div>
+      <div class="none">여정에 없음</div></div>
+    <div class="okk"><span><i class="ok"></i>다시 온다</span><span><i class="rec"></i>권한다</span><span><i class="no"></i>다시 안 온다</span></div>
+    <div class="note">안은 가족 리뷰만 센 숫자</div>
+  </div>
+
+  <!-- 우리가 할 일 -->
+  <div class="lab">우리가 할 일</div>
+  <div class="act">9곳 지도 · 가게 카드</div>
+  <div class="act">오미 지도 대기 안내 · 텐트에서 밥때 피해 보내기</div>
+  <div class="act span2">오미 안내 카드 한 장 — 앞면 "몇 마리 시킬까?" · 뒷면 "어떻게 먹을까?" <span class="prop">제안</span><br>먹는 법 카드 · 인원별 주문 안내 (segments.md) · 미나리 먼저 세트 P1</div>
+  <div class="act empty">표에 없음</div>
+</div>
+
+<footer>
+  <span class="lg"><b>막대 길이</b> = 빈도 (1건 = 4px)</span>
+  <span class="lg"><b>막대 색</b> = 강도 (평균 별점이 낮을수록 큰 불편)</span>
+  <span class="lg"><i style="background:var(--s1)"></i>1점 이하</span>
+  <span class="lg"><i style="background:var(--s2)"></i>1~2점</span>
+  <span class="lg"><i style="background:var(--s4)"></i>3~3.5점</span>
+  <span class="lg"><i style="background:var(--s5)"></i>3.5점 이상</span>
+  <span class="lg"><b>점선</b> = 확인 못 함 · (상상) · (가정)</span>
+  <span class="lg"><span class="badge" style="width:20px;height:20px;font-size:11px">1</span> = pain-top3.md 순위</span>
+</footer>
+<div class="srcs">
+  불편 · 빈도 · 강도 · 리뷰 번호 · Top 3 순위: journey/pain-top3.md 표 · 세 갈래 건수: journey/journey.md 1번 표 (각자 초안)<br>
+  단계 · 기분 · 만나는 곳: 각 팀원의 journey/my-journey.md 표 · 단계는 pain-top3.md의 '고르기 → 기다리기 → 주문하고 먹기' 순서에 맞춰 묶음 ·
+  김여민은 기다리기 · 주문 · 먹기를 4단계 하나로, 박준영은 대기 · 주문을 4단계 하나로 적어 같은 기분을 여러 칸에 그렸습니다.
+</div>
+
+</div></body></html>
