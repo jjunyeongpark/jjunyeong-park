@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<style>
+body{margin:0;background:#fcfcfb;font-family:"Malgun Gothic",sans-serif;color:#0b0b0b}
+#cap{width:1400px;padding:32px 36px;box-sizing:border-box;background:#fcfcfb}
+h1{font-size:26px;margin:0 0 6px}
+.sub{font-size:13.5px;color:#52514e;margin:0 0 14px;line-height:1.6}
+.route{display:grid;grid-template-columns:120px repeat(8,minmax(0,1fr));gap:6px;margin-bottom:6px}
+.loc{border-radius:8px;padding:8px 6px;text-align:center;font-weight:700;font-size:13px;line-height:1.35}
+.home{background:#F1EFE8;color:#444441}.tent{background:#EEEDFE;color:#3C3489;border:1px dashed #7F77DD}.walk{background:#E1F5EE;color:#085041}.shop{background:#FAEEDA;color:#633806}
+.loc small{display:block;font-weight:400;font-size:11.5px}
+.grid{display:grid;grid-template-columns:120px repeat(8,minmax(0,1fr));gap:6px;font-size:12.5px;line-height:1.5;word-break:keep-all}
+.h{font-weight:700;color:#52514e;font-size:13px;display:flex;align-items:center}
+.c{background:#fff;border:1px solid #e1e0d9;border-radius:8px;padding:8px}
+.c.tent{border:1px dashed #7F77DD;background:#F7F6FE;color:#26215C;font-weight:400;text-align:left}
+.st{background:#2C2C2A;color:#fff;border-radius:8px;padding:8px;font-weight:700;font-size:13.5px}
+.st small{display:block;font-weight:400;color:#D3D1C7;font-size:11.5px;margin-top:2px}
+.st.t{background:#534AB7}
+.bad{background:#FCEBEB;border-color:#F09595;color:#791F1F}
+.good{background:#EAF3DE;border-color:#97C459;color:#27500A}
+.mid{background:#F1EFE8;border-color:#B4B2A9;color:#444441}
+.mood{text-align:center;font-weight:700;font-size:14px}
+.ev{color:#5F5E5A;font-size:11.5px}
+.sang{color:#993556;font-weight:400}
+.ends{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.end{border-radius:12px;padding:12px 18px;border:1px solid}
+.end b{font-size:26px;display:block}
+.end span{font-size:12px}
+.notes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.note{background:#fff;border:1px solid #e1e0d9;border-radius:10px;padding:10px 12px;font-size:12.5px;line-height:1.55;word-break:keep-all}
+.note b{display:block;color:#0F6E56;margin-bottom:2px}
+.foot{font-size:11.5px;color:#5F5E5A;margin-top:12px;line-height:1.6}
+</style></head><body><div id="cap">
+<h1>고객 여정 지도 — 광주역 몽골텐트 → 유동 오리탕거리 가족 손님</h1>
+<p class="sub">팀 타겟 1번 "가족·부모님 모시고 몸보신하러 오는 사람"(brand/segments.md) · 주인공 <span class="sang">(상상)</span> 지은 씨, 30~40대 여성 — 남편·아이와 광주역 「오미네 미나리 텐트」에 들렀다가 <b>걸어서 10분</b> 오리탕거리에서 먹고, 돌아와 부모님께 「효도 한 그릇 세트」를 보낸다<br>근거: 박준영 네이버 리뷰 198건(5곳, 조회일 2026-11-17) · 팀 저장소 segments · products · showcase-list · brand-skill · 홈페이지 · 안시현 여정 초안(조회일 2026-11-25) · 텐트 기획안(2026-11-24) · #번호 = reviews.csv · 건수는 대략치 · 박준영 · 2026-11-25</p>
+<div class="route">
+<div class="h">장소</div>
+<div class="loc home" style="grid-column:span 2">집 · 휴대폰</div>
+<div class="loc tent">광주역광장 텐트<small>(상상)</small></div>
+<div class="loc walk">걸어서 10분 →<small>광주역 → 오리탕거리</small></div>
+<div class="loc shop" style="grid-column:span 3">유동 오리탕거리 가게</div>
+<div class="loc tent">10분 걸어 텐트로<small>(상상) → 부모님 댁</small></div>
+</div>
+<div style="position:relative;height:110px;margin:0 0 6px 126px"><canvas id="c"></canvas></div>
+<div class="grid">
+<div class="h">단계</div>
+<div class="st">0. 알기 전부터<small>몸보신 메뉴 찾기</small></div>
+<div class="st">1. 알게 됨<small>추천·블로그·기획전</small></div>
+<div class="st t">2. 광주역 텐트<small>시음·지도·놀이터</small></div>
+<div class="st">3. 걸어서 10분<small>가게 고르기</small></div>
+<div class="st">4. 대기·주문<small>줄 서고 주문</small></div>
+<div class="st">5. 가족과 식사<small>국물·미나리</small></div>
+<div class="st">6. 계산·나서기<small>영수증·포장</small></div>
+<div class="st t">7. 돌아와 택배<small>효도 한 그릇 세트</small></div>
+
+<div class="h">만나는 곳</div>
+<div class="c">집 · 가족 대화 <span class="sang">(상상)</span></div>
+<div class="c">지인 · 블로그 · TV 방송 · 네이버 지도 · 기획전 페이지 <span class="sang">(상상)</span></div>
+<div class="c tent">텐트 5동 · 국물 시음 · 오미 놀이터 · 운영 부스 · QR 접수 · 오미 "한 그릇 하고 가쇼"</div>
+<div class="c">광주역 → 오리탕거리 길 · 가게 간판 9곳</div>
+<div class="c">대기줄 · 신발 벗는 방 · 직원(이모님) · 메뉴</div>
+<div class="c">오리탕 냄비 · 미나리·들깨초장 · 사장님</div>
+<div class="c">계산대 · 직원 · 영수증 · 포장 용기</div>
+<div class="c tent">택배 판매존 · 주문 QR · 태화 택배 / 전라도미가 밀키트 같은 크기 · 손편지 카드</div>
+
+<div class="h">기분</div>
+<div class="c mid mood">보통</div>
+<div class="c mid mood">보통</div>
+<div class="c good mood">좋음 <span class="sang">(상상)</span></div>
+<div class="c mid mood">보통</div>
+<div class="c bad mood">나쁨</div>
+<div class="c good mood">좋음</div>
+<div class="c mid mood">보통</div>
+<div class="c good mood">좋음 <span class="sang">(상상)</span></div>
+
+<div class="h">불편한 점<br>(리뷰에 적힌 것만)</div>
+<div class="c">확인 못 함</div>
+<div class="c">블로그 칭찬만 믿고 갔다가 실망</div>
+<div class="c tent">확인 못 함 (행사 전)</div>
+<div class="c">유명한 집은 붐비고 좌식이라 다른 집으로 옮김 · 걷는 길은 확인 못 함</div>
+<div class="c bad">30분~1시간 대기 · 자리 못 고름 · 신발 번거로움·도난 · 주문 누락 · 늦게 온 팀이 먼저 · 불친절 · 먹는 법 안내 없음</div>
+<div class="c">고기 질김·잡내 · 여름에 더움 · 뼈 바르기 귀찮음 · 집게 위생</div>
+<div class="c">마감 직전 눈치 · 마감 안내 없음 · 계산 늦음 · 가격 오름</div>
+<div class="c tent"><b>택배: 확인 못 함</b> (리뷰 0건) · 포장해 부모님께 가져간 사례만</div>
+
+<div class="h">근거</div>
+<div class="c ev">보양·몸보신 23건 (#16 #54 #70 #77 #122 #194 등)</div>
+<div class="c ev">추천 10건 (#37 #63 #69 #75 #84 #99 #109 #126 #149 #177) · 블로그·방송 4건 (#24 #56 #78 #95)</div>
+<div class="c ev">텐트 기획안 4·5장 · segments 1번 (오미 지도 · 인원별 주문 안내) · showcase-list 9곳</div>
+<div class="c ev">가게 바꿈 4건 (#42 #50 #53 #56)</div>
+<div class="c ev">대기 5건 (#9 #25 #34 #53 #119) · 신발 3건 · 주문·순서 6건 (#1 #23 #28 #56 #119 #143) · 불친절 5건 · #37 · #123</div>
+<div class="c ev">친절 27건 · 가족 동반 (#86 #122 #165 #194) · 질김·잡내 6건 · 더움 (#7 #21 #27) · #143</div>
+<div class="c ev">마감 3건 (#10 #17 #172) · 계산 #23 · 가격 (#16 #188) · 포장 (#70 #144)</div>
+<div class="c ev">택배 0건 · 기획안 5-2 · products.md P2 · R1 · R2 (협의 전, 예시 가격 상상)</div>
+</div>
+<div class="ends">
+<div class="end good"><span>다녀온 뒤 · 다시 온다</span><b>14건</b><span>#40 #41 #49 #54 #72 #77 #78 #86 #99 #112 #114 #116 #177 #194</span></div>
+<div class="end mid"><span>다녀온 뒤 · 권한다</span><b>10건</b><span>#16 #42 #45 #65 #67 #79 #96 #98 #162 #168</span></div>
+<div class="end bad"><span>다녀온 뒤 · 다시 안 온다</span><b>5건</b><span>#1 #17 #21 #143 #172 — 모두 가게 안 문제</span></div>
+</div>
+<div class="notes">
+<div class="note"><b>왕복 20분 (상상)</b>돌아오지 않는 가족은 택배를 놓친다 → 텐트에서 효도 세트 QR을 먼저 주고, 먹고 난 뒤 휴대폰으로 주문</div>
+<div class="note"><b>차로 온 가족</b>가게 주차 편함 12건. 텐트를 건너뛰고 가게로 바로 갈 수 있다 · 광주역 주차는 확인 못 함</div>
+<div class="note"><b>기차로 온 가족</b>광주역 ≠ 광주송정역 (팀 홈페이지 directions.html) → "광주역 도착"을 먼저 안내</div>
+<div class="note"><b>걷는 동안 밥때</b>밥때 지나면 대기 없음 (#111 #160) → 12:00~13:30엔 시음을 쉬고 골목으로 보냄 (기획안 6장)</div>
+</div>
+<p class="foot">보라색 = 텐트 단계 (행사 전, 모두 상상) · 안시현 여정 초안(다른 자료 401건)도 3·4단계(들어가기·주문)가 가장 나쁘고 먹기는 좋았다 — 결론 같음, 숫자는 더하지 않음 · 「효도 한 그릇 세트」는 기획 상품, 판매처와 협의 전</p>
+</div>
+<script>
+const c=document.getElementById('c'),r=c.parentElement.getBoundingClientRect(),d=2;
+c.width=r.width*d;c.height=r.height*d;c.style.width=r.width+'px';c.style.height=r.height+'px';
+const x=c.getContext('2d');x.scale(d,d);
+const v=[2,2,3,2,1,3,2,3],sang=[0,0,1,0,0,0,0,1],n=v.length,gap=6,w=(r.width-gap*(n-1))/n;
+const X=i=>i*(w+gap)+w/2,Y=m=>({1:92,2:55,3:18})[m];
+x.strokeStyle='#e1e0d9';x.lineWidth=1;[1,2,3].forEach(m=>{x.beginPath();x.moveTo(0,Y(m));x.lineTo(r.width,Y(m));x.stroke();});
+for(let i=1;i<n;i++){x.strokeStyle=(sang[i]||sang[i-1])?'#7F77DD':'#2a78d6';x.setLineDash((sang[i]||sang[i-1])?[6,5]:[]);x.lineWidth=2.5;x.beginPath();x.moveTo(X(i-1),Y(v[i-1]));x.lineTo(X(i),Y(v[i]));x.stroke();}
+x.setLineDash([]);
+v.forEach((m,i)=>{x.fillStyle=m===1?'#d03b3b':m===3?'#0ca30c':'#888780';x.beginPath();x.arc(X(i),Y(m),7,0,7);x.fill();x.strokeStyle=sang[i]?'#534AB7':'#fcfcfb';x.lineWidth=2.5;x.stroke();});
+x.fillStyle='#898781';x.font='12px Malgun Gothic';x.fillText('좋음',0,Y(3)-4);x.fillText('보통',0,Y(2)-4);x.fillText('나쁨',0,Y(1)-4);
+</script></body></html>
